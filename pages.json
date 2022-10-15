@@ -1,0 +1,58 @@
+{
+	"pages": [{
+            "path" : "pages/main/main",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/chatbox/chatbox",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": true
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/my",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+    "tabBar": {
+      "list": [
+        {
+          "pagePath": "pages/main/main",
+          "text": "主页",
+          "iconPath": "static/tab-icons/main.png",
+          "selectedIconPath": "static/tab-icons/main-active.png"
+        },
+        {
+          "pagePath": "pages/chatbox/chatbox",
+          "text": "信箱",
+          "iconPath": "static/tab-icons/chatbox.png",
+          "selectedIconPath": "static/tab-icons/chatbox-active.png"
+        },
+        {
+          "pagePath": "pages/my/my",
+          "text": "我的",
+          "iconPath": "static/tab-icons/my.png",
+          "selectedIconPath": "static/tab-icons/my-active.png"
+        }
+      ]
+    },
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "少年强国",
+		"navigationBarBackgroundColor": "#03D4B8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+}

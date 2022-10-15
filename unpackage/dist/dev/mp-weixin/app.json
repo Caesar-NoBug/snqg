@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/chatbox/chatbox",
+    "pages/my/my"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "少年强国",
+    "navigationBarBackgroundColor": "#03D4B8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/main/main",
+        "text": "主页",
+        "iconPath": "static/tab-icons/main.png",
+        "selectedIconPath": "static/tab-icons/main-active.png"
+      },
+      {
+        "pagePath": "pages/chatbox/chatbox",
+        "text": "信箱",
+        "iconPath": "static/tab-icons/chatbox.png",
+        "selectedIconPath": "static/tab-icons/chatbox-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/tab-icons/my.png",
+        "selectedIconPath": "static/tab-icons/my-active.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
