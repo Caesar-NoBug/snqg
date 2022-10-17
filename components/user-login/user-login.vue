@@ -52,13 +52,16 @@
             signature: info.signature
           }*/
           
-          _this.updateToken('fake token')
-          /*
+          //_this.updateToken('fake token')
+          
           const query = {
-            token= res.code
+            token: res.code
           }
           
           uni.request({
+            header: {
+               'Content-Type': 'application/x-www-form-urlencoded' 
+            },
             url: 'localhost:3000/api/user/wxlogin',
             method:'POST',
             data:{
@@ -69,7 +72,6 @@
             success: (res) => {
               var result = JSON.parse(res.data)
               
-              
               if(result.code === 400)
                 return uni.$showMsg(result.msg)
               
@@ -79,7 +81,7 @@
               _this.updateToken(result.data.token)
             }
           })
-          */
+          
         }
       })
     }

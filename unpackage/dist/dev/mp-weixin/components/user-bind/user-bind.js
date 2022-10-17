@@ -45,7 +45,7 @@ component.options.__file = "components/user-bind/user-bind.vue"
 /*!**************************************************************************************************************!*\
   !*** D:/Code/miniprogram/snqg/components/user-bind/user-bind.vue?vue&type=template&id=0d066184&scoped=true& ***!
   \**************************************************************************************************************/
-/*! no static exports found */
+/*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -152,6 +152,9 @@ var invitecode = '';var _default =
 
       var _this = this;
       uni.request({
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded' },
+
         url: 'localhost:3000/api/user/wxbind',
         method: 'POST',
         data: {

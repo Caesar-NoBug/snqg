@@ -191,34 +191,36 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function ownKeys(object, enumera
                               signature: info.signature
                             }*/
 
-          _this.updateToken('fake token');
-          /*
-                                           const query = {
-                                             token= res.code
-                                           }
-                                           
-                                           uni.request({
-                                             url: 'localhost:3000/api/user/wxlogin',
-                                             method:'POST',
-                                             data:{
-                                               token: res.code,
-                                               auth: uni.$getAuth(query)
-                                             },
-                                             dataType:'json',
-                                             success: (res) => {
-                                               var result = JSON.parse(res.data)
-                                               
-                                               
-                                               if(result.code === 400)
-                                                 return uni.$showMsg(result.msg)
-                                               
-                                               if(result.code === 200)
-                                                 _this.hasBind()
-                                               
-                                               _this.updateToken(result.data.token)
-                                             }
-                                           })
-                                           */
+          //_this.updateToken('fake token')
+
+          var query = {
+            token: res.code };
+
+
+          uni.request({
+            header: {
+              'Content-Type': 'application/x-www-form-urlencoded' },
+
+            url: 'localhost:3000/api/user/wxlogin',
+            method: 'POST',
+            data: {
+              token: res.code,
+              auth: uni.$getAuth(query) },
+
+            dataType: 'json',
+            success: function success(res) {
+              var result = JSON.parse(res.data);
+
+              if (result.code === 400)
+              return uni.$showMsg(result.msg);
+
+              if (result.code === 200)
+              _this.hasBind();
+
+              _this.updateToken(result.data.token);
+            } });
+
+
         } });
 
     } }) };exports.default = _default;

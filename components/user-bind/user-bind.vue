@@ -36,6 +36,9 @@
         }
         var _this = this
         uni.request({
+          header: {
+             'Content-Type': 'application/x-www-form-urlencoded' 
+          },
           url: 'localhost:3000/api/user/wxbind',
           method:'POST',
           data:{
