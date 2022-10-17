@@ -4,18 +4,20 @@ import Vue from 'vue'
 import App from './App'
 import store from 'store/store.js'
 
-//TODO: 确定请求网站
 //import { $http } from '@escook/request-miniprogram'
+//import axios from 'utils/https.js'
+import md5 from 'js-md5'
 
 Vue.config.productionTip = false
 Vue.prototype.$store = store;
+//Vue.prototype.$axios = axios;
+Vue.prototype.$md5 = md5;
 App.mpType = 'app'
 
-/*
-uni.$http = $http
+//uni.$http = $http
 
-//TODO: 登录Url需设置
-$http.baseUrl = ''
+/*
+$http.baseUrl = 'localhost:3000/api/'
 
 $http.beforeRequest = function(options) {
   uni.showLoading({
@@ -31,8 +33,7 @@ $http.beforeRequest = function(options) {
 
 $http.afterRequest = function(){
   uni.hideLoading()
-}
-*/
+}*/
 
 // 封装弹框的方法
 uni.$showMsg = function(title = '数据请求失败！', duration = 1500) {
@@ -41,6 +42,14 @@ uni.$showMsg = function(title = '数据请求失败！', duration = 1500) {
     duration,
     icon: 'none'
   })
+}
+
+uni.$getAuth = function(info){
+  var time = new Date()
+  //var time = 1665814186
+  var tail = time % 100
+  var auth = tail + md5(time + info)
+  return auth
 }
 
 const app = new Vue({

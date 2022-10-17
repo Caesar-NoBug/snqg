@@ -1,1 +1,1 @@
-<view>用户详情<button data-event-opts="{{[['tap',[['clearToken']]]]}}" class="logout-btn" bindtap="__e">登出</button></view>
+<view>用户详情<button data-event-opts="{{[['tap',[['test',['$event']]]]]}}" bindtap="__e">test</button><button data-event-opts="{{[['tap',[['clearToken']]]]}}" class="logout-btn" bindtap="__e">登出</button></view>

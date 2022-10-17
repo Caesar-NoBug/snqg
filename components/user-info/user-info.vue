@@ -1,6 +1,7 @@
 <template>
   <view>
     用户详情
+    <button @click="test">test</button>
     <button class="logout-btn" @click="clearToken()">登出</button>
   </view>
 </template>
@@ -17,7 +18,10 @@
       };
     },
     methods: {
-      ...mapMutations('m_user', ['clearToken'])
+      ...mapMutations('m_user', ['clearToken']),
+      test() {
+        console.log(uni.$getAuth('username=admin&useremail=admin@example.com'))
+      }
     }
   }
 </script>

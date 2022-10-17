@@ -1,0 +1,1 @@
+<view class="login-content data-v-0d066184"><view class="invitation-code data-v-0d066184"><input placeholder="输入邀请码" data-event-opts="{{[['input',[['getCode',['$event']]]]]}}" bindinput="__e" class="data-v-0d066184"/></view><view data-event-opts="{{[['tap',[['confirm']]]]}}" class="login-btn data-v-0d066184" bindtap="__e">确定</view></view>

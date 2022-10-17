@@ -42,25 +42,44 @@
           const err = res.errMsg
           
           if(!err || err !== 'login:ok') return uni.$showMsg("登录失败！")
+          console.log(res)
           
-          
-          const query = {
+          /*const query = {
             code: res.code,
             encryptedData: info.encryptedData,
             iv: info.iv,
             rawData: info.rawData,
             signature: info.signature
-          }
-          
-          console.log(query)
-          
-          //TODO: 注册一个登录接口
-          //const loginResult = await uni.$http.post('', query)
-          //if(loginResult.meta.state !== 200) return uni.$showMsg('登录失败!')
-          //this.updateToken(loginResult.message.token)
-          
+          }*/
           
           _this.updateToken('fake token')
+          /*
+          const query = {
+            token= res.code
+          }
+          
+          uni.request({
+            url: 'localhost:3000/api/user/wxlogin',
+            method:'POST',
+            data:{
+              token: res.code,
+              auth: uni.$getAuth(query)
+            },
+            dataType:'json',
+            success: (res) => {
+              var result = JSON.parse(res.data)
+              
+              
+              if(result.code === 400)
+                return uni.$showMsg(result.msg)
+              
+              if(result.code === 200)
+                _this.hasBind()
+              
+              _this.updateToken(result.data.token)
+            }
+          })
+          */
         }
       })
     }

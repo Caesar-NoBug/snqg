@@ -1,6 +1,7 @@
 <template>
   <view>
     <user-login v-if="!token || token === '{}'"></user-login>
+    <user-bind v-else-if="!isbind"></user-bind>
     <user-info v-else></user-info>
   </view>
 </template>
@@ -16,7 +17,7 @@
     },
     
     computed: {
-        ...mapState('m_user', ['token'])
+        ...mapState('m_user', ['token', 'isbind'])
     }
     
   }

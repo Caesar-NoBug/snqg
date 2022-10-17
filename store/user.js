@@ -6,11 +6,19 @@ export default {
   state:() => ({
     token: uni.getStorageSync('token') || '{}',
     //用户的信息对象
-    userinfo: JSON.parse(uni.getStorageSync('userinfo') || '{}')
+    userinfo: JSON.parse(uni.getStorageSync('userinfo') || '{}'),
+    
+    isbind: uni.getStorageSync('isbind') || false
   }),
   
   //方法
   mutations: {
+    
+    hasBind(state) {
+      state.isbind = true
+      uni.setStorageSync('isbind', state.isbind)
+    },
+    
     clearToken(state){
       this.commit('m_user/updateToken', '{}')
     },

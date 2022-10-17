@@ -1,0 +1,19 @@
+{
+  "name": "snqg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@escook/request-miniprogram": "^0.2.1",
+    "axios": "^1.1.3"
+  },
+  "devDependencies": {
+    "js-md5": "^0.7.3"
+  }
+}
