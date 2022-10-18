@@ -46,7 +46,7 @@ uni.$showMsg = function(title = '数据请求失败！', duration = 1500) {
 
 uni.$getAuth = function(info){
   var time = new Date()
-  //var time = 1665814186
+  info = JSON.stringify(info)
   var tail = time % 100
   var auth = tail + md5(time + info)
   return auth

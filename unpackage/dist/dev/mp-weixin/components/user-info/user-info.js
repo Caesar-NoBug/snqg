@@ -136,7 +136,12 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function ownKeys(object, enumera
   methods: _objectSpread(_objectSpread({},
   (0, _vuex.mapMutations)('m_user', ['clearToken'])), {}, {
     test: function test() {
-      console.log(uni.$getAuth('username=admin&useremail=admin@example.com'));
+
+      var query = {
+        username: 'admin',
+        password: 1234 };
+
+      uni.$getAuth(query);
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

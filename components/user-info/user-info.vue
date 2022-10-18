@@ -20,7 +20,12 @@
     methods: {
       ...mapMutations('m_user', ['clearToken']),
       test() {
-        console.log(uni.$getAuth('username=admin&useremail=admin@example.com'))
+        
+        var query={
+          username:'admin',
+          password:1234
+        }
+        uni.$getAuth(query)
       }
     }
   }

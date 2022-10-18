@@ -57,7 +57,7 @@ uni.$showMsg = function () {var title = arguments.length > 0 && arguments[0] !==
 
 uni.$getAuth = function (info) {
   var time = new Date();
-  //var time = 1665814186
+  info = JSON.stringify(info);
   var tail = time % 100;
   var auth = tail + (0, _jsMd.default)(time + info);
   return auth;
