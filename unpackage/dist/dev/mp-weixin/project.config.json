@@ -6,8 +6,8 @@
   },
   "setting": {
     "urlCheck": false,
-    "es6": false,
-    "postcss": false,
+    "es6": true,
+    "postcss": true,
     "minified": false,
     "newFeature": true,
     "bigPackageSizeSupport": true,
@@ -18,9 +18,9 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "2.27.0",
-  "appid": "wx227fbffcc53150e5",
-  "projectname": "snqg",
+  "libVersion": "2.29.1",
+  "appid": "touristappid",
+  "projectname": "UniNutUI示例",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",

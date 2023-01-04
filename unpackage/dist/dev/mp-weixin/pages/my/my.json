@@ -1,8 +1,6 @@
 {
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "user-login": "/components/user-login/user-login",
-    "user-bind": "/components/user-bind/user-bind",
-    "user-info": "/components/user-info/user-info"
+    "nut-button": "../../uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/index"
   }
 }

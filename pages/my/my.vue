@@ -1,28 +1,9 @@
 <template>
-  <view>
-    <user-login v-if="!token || token === '{}'"></user-login>
-    <user-bind v-else-if="!isbind"></user-bind>
-    <user-info v-else></user-info>
-  </view>
+  <nut-button type="primary">这是一个按钮</nut-button>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-  
-  export default {
-    data() {
-      return {
-        
-      }
-    },
-    
-    computed: {
-        ...mapState('m_user', ['token', 'isbind'])
-    }
-    
-  }
 </script>
 
 <style>
-
 </style>
