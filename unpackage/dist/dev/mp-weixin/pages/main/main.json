@@ -1,4 +1,7 @@
 {
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "nut-divider": "../../uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/divider/index",
+    "nut-button": "../../uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/index"
+  }
 }

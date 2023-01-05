@@ -1,10 +1,9 @@
 <template>
   <div class="login_view">
     <nut-cell size="large">
-      <div class="login_container">
+      <div style="height: 215px">
         <view class="text" style="height: 30%;">请您登录，以免影响正常使用</view>
-        <!-- <view class="line"></view> -->
-		<nut-divider hairline="false"/>
+        <view class="line"></view>
         <view class="login_button">
           <nut-button plain type="primary">
             <img 
@@ -24,18 +23,12 @@
 </script>
 
 <style>
-	.login_container {
-		/* min-height: 215px; */
-		width: 100%;
-		margin: 10px;
-		/* display: flex; */
-	}
   .login_view{
-    /* margin:0 auto; */
+    margin:0 auto;
     width: 86%;
     position: absolute;
-    margin-top: 32%;
-    margin-left: 7%
+    top: 32%;
+    left: 7%
   }
   .text{
     text-align: center;
@@ -47,13 +40,9 @@
     background-color: gray;
   }
   .login_button{
-    /* position: absolute; */
-	
-	/* align-items: center; */
-	margin-top: 10px;
-	margin-left: 25%;
-    /* top: 50%;
-    left: 25%; */
+    position: absolute;
+    top: 50%;
+    left: 25%;
   }
   .img{
     width: 20px;

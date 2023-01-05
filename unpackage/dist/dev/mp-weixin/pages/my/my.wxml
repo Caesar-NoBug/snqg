@@ -1,1 +1,1 @@
-<nut-button wx:if="{{a}}" u-s="{{['d']}}" u-i="739de150-0" bind:__l="__l" u-p="{{a}}">这是一个按钮</nut-button>
+<my_login u-i="40dab982-0" bind:__l="__l"></my_login>
