@@ -1,6 +1,0 @@
-{
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "my_login": "../../components/my_login/my_login"
-  }
-}
