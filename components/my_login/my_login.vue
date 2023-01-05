@@ -3,7 +3,8 @@
     <nut-cell size="large">
       <div style="height: 215px">
         <view class="text" style="height: 30%;">请您登录，以免影响正常使用</view>
-        <view class="line"></view>
+<!--        <view class="line"></view>-->
+        <nut-divider :hairline="false"/>
         <view class="login_button">
           <nut-button plain type="primary">
             <img 
