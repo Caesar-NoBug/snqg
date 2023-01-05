@@ -20,8 +20,18 @@
   "compileType": "miniprogram",
   "libVersion": "2.29.1",
   "appid": "touristappid",
-  "projectname": "UniNutUI示例",
-  "condition": {},
+  "projectname": "少年强国",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/main/main",
+          "pathName": "pages/main/main",
+          "query": ""
+        }
+      ]
+    }
+  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

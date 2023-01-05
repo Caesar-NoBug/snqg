@@ -1,59 +1,66 @@
 {
-	"pages": [
-    {
-              "path" : "pages/main/main",
-              "style" :                                                                                    
-              {
-                  "enablePullDownRefresh": false
-              }
-              
-          }
-          ,{
-              "path" : "pages/chatbox/chatbox",
-              "style" :                                                                                    
-              {
-                  "enablePullDownRefresh": true
-              }
-              
-          }
-          ,{
-              "path" : "pages/my/my",
-              "style" :                                                                                    
-              {
-                  "enablePullDownRefresh": false
-              }
-              
-          }
-  ],"tabBar": {
-      "list": [
+    "pages" : [
         {
-			"iconPath": "static/logo.png",
-          "pagePath": "pages/main/main",
-          "text": "主页"
+            "path" : "pages/main/main",
+            "style" : {
+                "enablePullDownRefresh" : false
+            }
         },
         {
-          "pagePath": "pages/chatbox/chatbox",
-          "text": "信箱"
+            "path" : "pages/chatbox/chatbox",
+            "style" : {
+                "enablePullDownRefresh" : true
+            }
         },
         {
-          "pagePath": "pages/my/my",
-          "text": "我的"
+            "path" : "pages/my/my",
+            "style" : {
+                "enablePullDownRefresh" : false
+            }
+        },
+        {
+            "path" : "pages/call_history/call_history",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "enablePullDownRefresh" : false
+            }
+        },
+        {
+            "path" : "pages/call_detail/call_detail",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "enablePullDownRefresh" : false
+            }
+        },
+    ],
+    "tabBar" : {
+        "list" : [
+            {
+                "pagePath" : "pages/main/main",
+                "text" : "主页"
+            },
+            {
+                "pagePath" : "pages/chatbox/chatbox",
+                "text" : "信箱"
+            },
+            {
+                "pagePath" : "pages/my/my",
+                "text" : "我的"
+            }
+        ]
+    },
+    "globalStyle" : {
+        "navigationBarTextStyle" : "black",
+        "navigationBarTitleText" : "少年强国",
+        "navigationBarBackgroundColor" : "#F8F8F8",
+        "backgroundColor" : "#F8F8F8"
+    },
+    "easycom" : {
+        "autoscan" : true,
+        "custom" : {
+            "nut-(.*)?-(.*)" : "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue", // 匹配components目录内的vue文件
+            "nut-(.*)" : "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
         }
-      ]
     },
-	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "少年强国",
-		"navigationBarBackgroundColor": "#E74343",
-		"backgroundColor": "#F8F8F8",
-		"navigationStyle":"custom"
-	},
-    "easycom": {
-      "autoscan": true,
-      "custom": {
-        "nut-(.*)?-(.*)": "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1$2/index.vue", // 匹配components目录内的vue文件
-        "nut-(.*)": "@/uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/$1/index.vue"
-      }
-    },
-	"uniIdRouter": {}
+    "uniIdRouter" : {}
 }

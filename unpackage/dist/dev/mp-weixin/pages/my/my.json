@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "nut-button": "../../uni_modules/sky-nutui/components/sky-nutui/packages/__VUE/button/index"
+    "my_login": "../../components/my_login/my_login"
   }
 }
