@@ -1,1 +1,0 @@
-<nut-divider style="color:#6666FF" u-i="8969e13c-0" bind:__l="__l"/><nut-button u-s="{{['d']}}" bindclick="{{a}}" u-i="8969e13c-1" bind:__l="__l">通话详情 </nut-button><nut-button u-s="{{['d']}}" bindclick="{{b}}" u-i="8969e13c-2" bind:__l="__l">通话历史 </nut-button>
