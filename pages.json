@@ -55,7 +55,7 @@
         "navigationBarTitleText" : "少年强国",
         "navigationBarBackgroundColor" : "#F8F8F8",
         "backgroundColor" : "#F8F8F8",
-        "navigationStyle":"custom"
+        "navigationStyle": "custom"
     },
     "easycom" : {
         "autoscan" : true,

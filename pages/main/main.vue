@@ -12,9 +12,9 @@
 			change01: function(){uni.navigateTo({
 		url: '/pages/call_detail/call_detail'
 			});},
-			change02: function(){uni.navigateTo({
-		url: '/pages/call_history/call_history'
-			});}}
+			change02: function(){
+        uni.$jump("/pages/call_detail/call_detail");
+      }}
 		    
 	}
 </script>
