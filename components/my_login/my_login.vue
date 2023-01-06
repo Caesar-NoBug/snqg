@@ -1,9 +1,8 @@
 <template>
   <div class="login_view">
     <nut-cell size="large">
-      <div style="height: 215px">
+      <div style="height: 215px; margin-left: 17%;">
         <view class="text" style="height: 30%;">请您登录，以免影响正常使用</view>
-<!--        <view class="line"></view>-->
         <nut-divider :hairline="false"/>
         <view class="login_button">
           <nut-button plain type="primary">

@@ -1,7 +1,7 @@
 // color
 
 // 主色调
-$primary-color: #fa2c19 !default;
+$primary-color: #E74343 !default;
 $primary-color-end: #fa6419 !default;
 
 // 辅助色
@@ -13,7 +13,7 @@ $title-color2: #666666 !default;
 // 次内容
 $text-color: #808080 !default;
 // 特殊禁用色
-$disable-color: #cccccc !default;
+$disable-color: #FFFFFF !default;
 $white: #fff !default;
 $black: #000 !default;
 $required-color: #fa2c19 !default;
@@ -173,7 +173,7 @@ $picker-columns-item-color: $title-color !default;
 $input-border-bottom: #eaf0fb !default;
 $input-disabled-color: #c8c9cc !default;
 $input-required-color: $required-color !default;
-$input-font-size: $font-size-2 !default;
+$input-font-size: 20px !default;
 
 // textarea
 
@@ -695,13 +695,13 @@ $table-tr-odd-bg-color: $white !default;
 $navbar-height: 44px !default;
 $navbar-margin-bottom: 20px !default;
 $navbar-padding: 13px 16px !default;
-$navbar-background: $white !default;
+$navbar-background: $primary-color !default;
 $navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
-$navbar-color: $title-color2 !default;
+$navbar-color: $white !default;
 $navbar-title-base-font: $font-size-2 !default;
 $navbar-title-font: $font-size-2 !default;
 $navbar-title-font-weight: 0 !default;
-$navbar-title-font-color: $navbar-color !default;
+$navbar-title-font-color: $white !default;
 $navbar-title-width: 100px !default;
 $navbar-title-icon-margin: 0 0 0 13px !default;
 

@@ -4,6 +4,13 @@ import App from './App'
 import Vue from 'vue'
 Vue.config.productionTip = false
 App.mpType = 'app'
+
+uni.$jump = function(path){
+  uni.navigateTo({
+    url: path
+  });
+}
+
 const app = new Vue({
     ...App
 })

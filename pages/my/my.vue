@@ -1,5 +1,5 @@
 <template>
-  <nut-navbar :left-show="false" :style="{background: '#E74343'}">
+  <!-- <nut-navbar :left-show="false" :style="{background: '#E74343'}">
     <template #left>
       <nut-icon color="#FFFFFF" name="left"></nut-icon>
     </template>
@@ -8,7 +8,7 @@
         这是标题
       </div>
     </template>
-  </nut-navbar>
+  </nut-navbar> -->
   <my_login></my_login>
   
 </template>
