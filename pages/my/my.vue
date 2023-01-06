@@ -9,8 +9,8 @@
       </div>
     </template>
   </nut-navbar> -->
-  <my_login></my_login>
-  
+  <my_detail></my_detail>
+  <!-- <my_bind></my_bind> -->
 </template>
 
 <script>
