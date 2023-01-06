@@ -4,7 +4,7 @@
 		<nut-navbar :left-show="false">
 			<template #left>
 				<view class="top-bar-content" style="font-size: 18px; line-height: 30px;">
-					<nut-icon v-if="returnAble" name="left" @click="onBackClicked()"></nut-icon>
+					<nut-icon color="#FFFFFF" v-if="returnAble" name="left" @click="onBackClicked()"></nut-icon>
 					<text v-if="title" class="top-bar-title">{{title}}</text>
 				</view>
 			</template>
@@ -45,6 +45,6 @@
 	.top-bar-title {
 		flex:1 0 auto;
 		margin-left: 20%;
-		
+		color: white;
 	}
 </style>

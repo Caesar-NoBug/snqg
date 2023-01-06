@@ -1,13 +1,4 @@
 <template>
-  <div style="margin-top: 10%;">
-    <nut-navbar :left-show="false">
-      <template #left>
-        <div style="font-size: 18px; line-height: 30px;">
-          <nut-icon name="left"></nut-icon>账 号 绑 定
-        </div>
-      </template>
-    </nut-navbar>
-  </div>
   <div style="margin-top: 10%; color: #E74343; font-size: 24px; text-align: center; font-weight: bold;">
     账 号 绑 定
   </div>
