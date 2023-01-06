@@ -1,4 +1,5 @@
 <template>
+	<top-bar title="我的"></top-bar>
   <!-- <nut-navbar :left-show="false" :style="{background: '#E74343'}">
     <template #left>
       <nut-icon color="#FFFFFF" name="left"></nut-icon>

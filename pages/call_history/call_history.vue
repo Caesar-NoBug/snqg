@@ -1,8 +1,5 @@
 <template>
-	<!--头部-->
-	<div>
-		
-	</div>
+	<top-bar returnAble="true" title="通话历史"></top-bar>
 	
 	<div class="history_times">
 		<nut-cell center title='通话次数' sub-title='您一年内的通话次数' desc='--次'>
@@ -42,7 +39,7 @@
 
 <style>
 .history_times{
-	margin-top: 20%;
+	/* margin-top: 20%; */
 }
 .text_detail{
 	text-align: center;
