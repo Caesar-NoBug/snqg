@@ -1,13 +1,4 @@
 <template>
-  <div style="margin-top: 10%;">
-    <nut-navbar :left-show="false">
-      <template #left>
-        <div style="font-size: 18px; line-height: 30px; color: white;">
-          <nut-icon name="left" color="white"></nut-icon>我 的
-        </div>
-      </template>
-    </nut-navbar>
-  </div>
   <div class="head">
     <nut-avatar
         size="large"

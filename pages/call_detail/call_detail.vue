@@ -1,5 +1,5 @@
 <template>
-	<top-bar returnAble="true" title="通话详情"></top-bar>
+	<top-bar :returnAble="true" title="通话详情"></top-bar>
 	<view>
 		<view class="text_date">2022年11月14日</view>
 	</view>

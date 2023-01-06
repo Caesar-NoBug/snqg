@@ -1,16 +1,16 @@
 <template>
-	<top-bar returnAble="true" title="通话历史"></top-bar>
+	<top-bar :returnAble="true" title="通话历史"></top-bar>
 	
-	<div class="history_times">
+	<view class="history_times">
 		<nut-cell center title='通话次数' sub-title='您一年内的通话次数' desc='--次'>
 		</nut-cell>
 		<nut-cell center title='通话时长' sub-title='您一年内的通话时长' desc='--小时'>
 		</nut-cell>
-	</div>
-	<div class="text_detail">
+	</view>
+	<view class="text_detail">
 		<view>通话详情</view>
-	</div>
-	<div>
+	</view>
+	<view>
 		<template>
 		  <nut-cell-group >
 		    <nut-cell title="2022年11月14日" is-link></nut-cell>
@@ -20,7 +20,7 @@
 			<nut-cell title="2022年12月8日" is-link></nut-cell>
 		  </nut-cell-group>
 		</template>
-	</div>
+	</view>
 	<!--留出进行调用数据空间-->
 </template>
 
