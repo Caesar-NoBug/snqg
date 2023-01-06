@@ -104,7 +104,7 @@ $cell-color: $title-color2 !default;
 $cell-title-font: $font-size-2 !default;
 $cell-title-desc-font: $font-size-1 !default;
 $cell-desc-font: $font-size-2 !default;
-$cell-desc-color: $disable-color !default;
+$cell-desc-color: #CCCCCC !default;
 $cell-border-radius: 6px !default;
 $cell-padding: 13px 16px !default;
 $cell-line-height: 20px !default;
@@ -133,7 +133,7 @@ $cell-group-background-color: $white !default;
 $divider-margin: 16px 0 !default;
 $divider-text-font-size: $font-size-2 !default;
 $divider-text-color: #909ca4 !default;
-$divider-line-height: 2px !default;
+$divider-line-height: 5px !default;
 $divider-before-margin-right: 16px !default;
 $divider-after-margin-left: 16px !default;
 $divider-vertical-height: 12px !default;
@@ -257,8 +257,8 @@ $price-decimal-small-size: 10px !default;
 
 //avatar
 $avatar-square: 5px !default;
-$avatar-large-width: 60px !default;
-$avatar-large-height: 60px !default;
+$avatar-large-width: 90px !default;
+$avatar-large-height: 90px !default;
 $avatar-small-width: 32px !default;
 $avatar-small-height: 32px !default;
 $avatar-normal-width: 40px !default;
@@ -477,7 +477,7 @@ $timeselect-timedetail-time-text-color: #999 !default;
 $timeselect-timedetail-time-font-size: $font-size-1 !default;
 
 //tag
-$tag-font-size: 12px !default;
+$tag-font-size: 18px !default;
 $tag-default-border-radius: 4px !default;
 $tag-round-border-radius: 8px !default;
 $tag-default-background-color: #000000 !default;
