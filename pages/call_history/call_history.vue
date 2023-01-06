@@ -1,21 +1,28 @@
 <template>
-	<nut-navbar :left-show='false' :style="{background:'#E74343'}">
-		<div>
-			<nut-cell name='rect-left'></nut-cell><!--需要对左箭头进行说明-->
-			<view class="text_history">通话历史</view>
-		</div>
-	</nut-navbar>
-	<div>
-		<nut-cell center sub-title='通话次数' desc='您一年内的通话次数'>
-			<div class='text_times'>--次</div>
-		</nut-cell>
-		<nut-cell center sub-title='通话时长' desc='您一年内的通话时长'>
-			<div class='text_hours'>--小时</div>
-		</nut-cell>
-	</div>
-		<view class="text_detail">通话详情</view>
+	<!--头部-->
 	<div>
 		
+	</div>
+	
+	<div class="history_times">
+		<nut-cell center title='通话次数' sub-title='您一年内的通话次数' desc='--次'>
+		</nut-cell>
+		<nut-cell center title='通话时长' sub-title='您一年内的通话时长' desc='--小时'>
+		</nut-cell>
+	</div>
+	<div class="text_detail">
+		<view>通话详情</view>
+	</div>
+	<div>
+		<template>
+		  <nut-cell-group >
+		    <nut-cell title="2022年11月14日" is-link></nut-cell>
+		    <nut-cell title="2022年11月20日" is-link></nut-cell>
+		    <nut-cell title="2022年11月26日" is-link></nut-cell>
+		    <nut-cell title="2022年12月2日" is-link></nut-cell>
+			<nut-cell title="2022年12月8日" is-link></nut-cell>
+		  </nut-cell-group>
+		</template>
 	</div>
 	<!--留出进行调用数据空间-->
 </template>
@@ -34,13 +41,10 @@
 </script>
 
 <style>
-.text_history{
-	
-}
-.text_times{
-	
+.history_times{
+	margin-top: 20%;
 }
 .text_detail{
-	
+	text-align: center;
 }
 </style>
