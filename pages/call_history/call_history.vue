@@ -2,9 +2,9 @@
 	<top-bar-container :returnAble="true" title="通话历史">
 		<template #content>
 			<view class="history_times">
-				<nut-cell center title='通话次数' sub-title='您一年内的通话次数' desc='--次'>
+				<nut-cell center title='通话次数' sub-title='您的总通话次数' :desc="call_count + ' 次'">
 				</nut-cell>
-				<nut-cell center title='通话时长' sub-title='您一年内的通话时长' desc='--小时'>
+				<nut-cell center title='通话时长' sub-title='您的总通话时长' :desc="getCallTimeString(call_time)">
 				</nut-cell>
 			</view>
 			<view class="text_detail">
@@ -13,11 +13,12 @@
 			<view>
 				<template>
 				  <nut-cell-group >
-				    <nut-cell title="2022年11月14日" is-link></nut-cell>
+				   <!-- <nut-cell title="2022年11月14日" is-link></nut-cell>
 				    <nut-cell title="2022年11月20日" is-link></nut-cell>
 				    <nut-cell title="2022年11月26日" is-link></nut-cell>
 				    <nut-cell title="2022年12月2日" is-link></nut-cell>
-					<nut-cell title="2022年12月8日" is-link></nut-cell>
+					<nut-cell title="2022年12月8日" is-link></nut-cell> -->
+					<nut-cell v-for="call in calls" :title="getCallDateString(call.start_time)" @click="navigateToCallDetail(call)"></nut-cell>
 				  </nut-cell-group>
 				</template>
 			</view>
@@ -29,21 +30,37 @@
 </template>
 
 <script>
+import NavigateUtil from '../../utils/NavigateUtil';
+import TimeUtil from '../../utils/TimeUtil'
 	export default {
 		data() {
 			return {
-				
+				call_count: 1,
+				call_time: 14263,
+				calls: [{
+					id: "2931830120A",
+					start_time: 1665814186,
+					duration: 14263,
+					completed: 1,
+				}, {
+					id: "293183012AD",
+					start_time: 1665814192,
+					duration: 14261,
+					completed: 1,
+				}]
 			}
 		},
 		methods: {
-      
-			onload(options){
-        uni.showModal({
-          				content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
-          				confirmText: '确定',
-          				cancelText: '取消'
-          			});
-        }
+			getCallTimeString(time) {
+				return TimeUtil.getTimeString(time);
+			},
+			getCallDateString(time) {
+				return TimeUtil.getDateString(time);
+			},
+			navigateToCallDetail(call) {
+				console.log(call);
+				NavigateUtil.navigateTo("/pages/call_detail/call_detail", call);
+			},
 		}
 	}
 </script>

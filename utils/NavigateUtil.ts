@@ -6,15 +6,18 @@ export default class NavigateUtil {
 			});
 			return;
 		}
-		const property: string[] = Object.getOwnPropertyNames(data).filter(prop => data[prop] === null);
-		let query: Array<String> = [];
-		for(const prop in property) {
-			query.push(prop + "=" + data[prop]);
-		}
 		uni.navigateTo({
-			url: path + "?" + query.join("&"),
+			url: path + "?data=" + encodeURIComponent(JSON.stringify(data)),
 		});
 	}
+	
+	static getNavigateData(option) {
+		if(option.data == null) {
+			return null;
+		}
+		return JSON.parse(decodeURIComponent(option.data));
+	}
+	
 	static navigateBack() {
 		uni.navigateBack();
 	}
