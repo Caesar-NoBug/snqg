@@ -12,13 +12,29 @@
       max-length="6"
     />
     <div style="margin-top: 25%;">
-      <nut-button size="large" type="primary" color="#E74343">
+      <nut-button size="large" type="primary" color="#E74343" @click="change01()">
           绑 定 账 号
       </nut-button>
     </div>
 </template>
 
 <script>
+  import NavigateUtil from '../../utils/NavigateUtil';
+  var userInfo = {
+    name: "张三",
+    type: 0,
+    avatar: "https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png",
+    call_count: 13,
+    call_time: 160
+  };
+  
+  export default {
+  	methods: {
+  		change01: function() {
+  			NavigateUtil.navigateTo('/pages/my_detail/my_detail', userInfo);
+  		}
+  	}
+  }
 </script>
 
 <style>

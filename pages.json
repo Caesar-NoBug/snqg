@@ -31,6 +31,27 @@
                 "navigationBarTitleText" : "",
                 "enablePullDownRefresh" : false
             }
+        },
+        {
+          "path": "pages/my_bind/my_bind",
+          "style" : {
+              "navigationBarTitleText" : "",
+              "enablePullDownRefresh" : false
+          }
+        },
+        {
+          "path": "pages/my_detail/my_detail",
+          "style" : {
+              "navigationBarTitleText" : "",
+              "enablePullDownRefresh" : false
+          }
+        },
+        {
+          "path": "pages/my_login/my_login",
+          "style" : {
+              "navigationBarTitleText" : "",
+              "enablePullDownRefresh" : false
+          }
         }
     ],
     "tabBar" : {
