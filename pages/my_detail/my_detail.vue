@@ -41,6 +41,7 @@
 
 <script>
   import NavigateUtil from '../../utils/NavigateUtil';
+  import TimeUtil from '../../utils/TimeUtil'
   
   export default{
     data() {
@@ -58,7 +59,7 @@
       	NavigateUtil.navigateTo('/pages/my_login/my_login');
       },
       change02: function() {
-      	NavigateUtil.navigateTo('/pages/my_history/my_history');
+      	NavigateUtil.navigateTo('/pages/call_history/call_history');
       }
     },
     onLoad(options){
@@ -68,10 +69,7 @@
       this.type = options.type == 0 ? "志愿者" : "家长";
       this.avatar = options.avatar;
       this.call_count = options.call_count;
-      let time = options.call_time;
-      if(time > 3600) this.call_time = (time / 3600) + " 小时";
-      else if(time > 60) this.call_time = (time / 60) + " 分钟";
-      else this.call_time = time + " 秒";
+      this.call_time = TimeUtil.getTimeString(options.call_time);
     }
   }
   

@@ -26,13 +26,6 @@
             }
         },
         {
-            "path" : "pages/call_detail/call_detail",
-            "style" : {
-                "navigationBarTitleText" : "",
-                "enablePullDownRefresh" : false
-            }
-        },
-        {
           "path": "pages/my_bind/my_bind",
           "style" : {
               "navigationBarTitleText" : "",
@@ -52,6 +45,15 @@
               "navigationBarTitleText" : "",
               "enablePullDownRefresh" : false
           }
+        }
+        ,{
+            "path" : "pages/call_detail/call_detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
         }
     ],
     "tabBar" : {
