@@ -3,9 +3,9 @@
 	<view class="top-bar-container" :style="{marginTop: navBarHeight + 'px'}">
 		<nut-navbar :left-show="false">
 			<template #left>
-				<view class="top-bar-content" style="font-size: 18px; line-height: 30px;">
+				<view class="top-bar-content" style="font-size: 18px;">
 					<nut-icon color="#FFFFFF" v-if="returnAble" name="left" @click="onBackClicked()"></nut-icon>
-					<text v-if="title" class="top-bar-title">{{title}}</text>
+					<text v-if="title" class="top-bar-title">{{title.split('').join(' ')}}</text>
 				</view>
 			</template>
 		</nut-navbar>
@@ -13,13 +13,19 @@
 </template>
 
 <script lang="ts">
-	const  app = getApp();
-	
+	const app = getApp();
+
 	export default {
 		name: "top-bar",
 		props: {
-		  returnAble: { type: Boolean, default: false }, //左侧  是否显示返回icon
-		  title: { type: String, default: '' }, //中间  文字标题
+			returnAble: {
+				type: Boolean,
+				default: false
+			}, //左侧  是否显示返回icon
+			title: {
+				type: String,
+				default: ''
+			}, //中间  文字标题
 		},
 		data() {
 			return {
@@ -42,8 +48,9 @@
 		align-items: center;
 		justify-content: flex-start;
 	}
+
 	.top-bar-title {
-		flex:1 0 auto;
+		flex: 1 0 auto;
 		margin-left: 20%;
 		color: white;
 	}

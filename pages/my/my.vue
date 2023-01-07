@@ -1,16 +1,11 @@
 <template>
-	<top-bar title="我的"></top-bar>
-  <!-- <nut-navbar :left-show="false" :style="{background: '#E74343'}">
-    <template #left>
-      <nut-icon color="#FFFFFF" name="left"></nut-icon>
-    </template>
-    <template #content>
-      <div style="color: white;">
-        这是标题
-      </div>
-    </template>
-  </nut-navbar> -->
-  <my_detail></my_detail>
+	<!-- <top-bar title="我的"></top-bar> -->
+	<top-bar-container title="我的">
+		<template #content>
+			<my_detail></my_detail>
+		</template>
+	</top-bar-container>
+
   <!-- <my_bind></my_bind> -->
 </template>
 
