@@ -58,7 +58,6 @@ import TimeUtil from '../../utils/TimeUtil'
 				return TimeUtil.getDateString(time);
 			},
 			navigateToCallDetail(call) {
-				console.log(call);
 				NavigateUtil.navigateTo("/pages/call_detail/call_detail", call);
 			},
 		}
