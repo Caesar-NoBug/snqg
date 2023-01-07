@@ -1,6 +1,22 @@
+import service from './http'
 import md5 from 'crypto-js/md5'
 
 export default class ApiUtil {
+    static get(url: string, data: any) {
+        if (data == null) {
+            return service.get(url);
+        }
+        let authedString = this.getAuthedString(data);
+        return service.get(url + "?" + authedString);
+    }
+
+    static post(url: string, data: any) {
+        if (data == null) {
+            return service.get(url);
+        }
+        const authedString = this.getAuthedString(data);
+        return service.post(url, authedString);
+    }
 
     static getAuthedString(data: any) {
         const property: string[] = Object.getOwnPropertyNames(data).filter(prop => data[prop] === null);
