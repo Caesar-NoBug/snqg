@@ -6,7 +6,6 @@
 			uni.getSystemInfo({
 				success(systemInfo) {
 					that.globalData.navBarHeight = systemInfo.statusBarHeight;
-					console.log(systemInfo.statusBarHeight);
 				}
 			})
 		},

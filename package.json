@@ -6,6 +6,11 @@
   "author": "youth_strength",
   "private": true,
   "dependencies": {
-    "axios": "^1.2.2"
+    "axios": "^1.2.2",
+    "crypto-js": "^4.1.1",
+    "uniapp-axios-adapter": "^0.3.2"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.1.1"
   }
 }
