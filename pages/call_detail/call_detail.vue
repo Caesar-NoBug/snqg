@@ -1,15 +1,21 @@
 <template>
-	<top-bar-container :returnAble="true" title="通话详情">
+	<top-bar-container :returnAble="true" title="信息统计">
 		<template #content>
 			<div class="text_date">
-				<span>{{getCallDateString(start_time)}}</span>
+			
 			</div>
 			<view>
-				<nut-cell center title='通话时间' sub-title="本次通话在何时进行" :desc="getCallMomentString(start_time)">
+				<nut-cell center title='通话次数' :desc="call_count + '次'">
 				</nut-cell>
-				<nut-cell center title='通话时长' sub-title='本次通话的通话时长' :desc='getCallTimeString(duration)'>
+				<nut-cell center title='通话时长' :desc="getCallTimeString(call_time)"> 
 				</nut-cell>
-				<nut-cell center title='通话是否完成' sub-title='本次通话是否正常完成' :desc='completed == 1 ? "是" : "否"'>
+				<nut-cell center title='累计对接儿童人数' :desc="child + '人'">
+				</nut-cell>
+				<nut-cell center title='通话平均时长' :desc="getAverageString(call_count,call_time)">
+				</nut-cell>
+				<nut-cell center title='通话成功率' :desc="getCallSuccessDate(call_count,total_counts)">
+				</nut-cell>
+				<nut-cell center title='志愿时长累计' :desc="getVolunteerTimeString(call_count)">
 				</nut-cell>
 			</view>
 			<view>
@@ -40,19 +46,44 @@
 				id: data.id,
 				start_time: data.start_time,
 				duration: data.duration,
-				completed: data.completed,
+				// completed: data.completed,
+				// 加入child,以及total_counts通话总次数进行尝试，待data完成后进行删除
+				child: 4,
+				total_counts:2,
+				call_count: 1,
+				call_time: 14263,
+				calls: [{
+					id: "2931830120A",
+					start_time: 1665814186,
+					duration: 14263,
+					completed: 1,
+				}, {
+					id: "293183012AD",
+					start_time: 1665814192,
+					duration: 14261,
+					completed: 1,
+				}]
 			};
 		},
 		methods: {
 			getCallTimeString(time) {
 				return TimeUtil.getTimeString(time);
 			},
-			getCallDateString(time) {
-				return TimeUtil.getDateString(time);
-			},
+			// getCallDateString(time) {
+				// return TimeUtil.getDateString(time);
+			// },
 			getCallMomentString(time) {
 				return TimeUtil.getMomentString(time);
-			}
+			 },
+			getAverageString(call_count,call_time){
+				 return TimeUtil.getAverageString(call_count,call_time)
+			 },
+			getVolunteerTimeString(call_count){
+				return TimeUtil.getVolunteerTimeString(call_count)
+			},
+			getCallSuccessDate(call_count, total_counts){
+				return TimeUtil.getCallSuccessDate(call_count, total_counts)
+			},
 		}
 	}
 </script>
