@@ -29,12 +29,9 @@
   		   <nut-cell center title="个人信息" icon="my" sub-title="查看或修改个人信息 " is-link="true"></nut-cell>
   		   <nut-cell @click="change02()" center title="通话历史" icon="comment" sub-title="查看您一年内的通话历史 " is-link="true"></nut-cell>
   		   <nut-cell center title="信息统计" icon="horizontal" sub-title="统计所有通话时长及通话质量 " is-link="true"></nut-cell>
+         <nut-cell @click="change04()" center title="设置" icon="setting" sub-title="设置相关功能 " is-link="true"></nut-cell>
   		</div>
-  		<div style="margin-top: 40%;">
-  		  <nut-button size="large" type="primary" color="#E74343" @click="change01()">
-  		      退 出 登 录
-  		  </nut-button>
-  		</div>
+  		
   	</template>
   </top-bar-container>
 </template>
@@ -60,6 +57,9 @@
       },
       change02: function() {
       	NavigateUtil.navigateTo('/pages/call_history/call_history');
+      },
+      change04: function() {
+      	NavigateUtil.navigateTo('/pages/my_settings/my_settings');
       }
     },
     onLoad(options){

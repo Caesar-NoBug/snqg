@@ -54,6 +54,13 @@
                 "enablePullDownRefresh": false
             }
             
+        },
+        {
+          "path": "pages/my_settings/my_settings",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
         }
     ],
     "tabBar" : {
