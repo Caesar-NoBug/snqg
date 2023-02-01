@@ -12,9 +12,10 @@
   		    label="邀请码" 
   		    placeholder="请输入邀请码" 
   		    max-length="6"
+          v-model="code"
   		  />
   		  <div style="margin-top: 25%;">
-  		    <nut-button size="large" type="primary" color="#E74343" @click="change01()">
+  		    <nut-button size="large" type="primary" color="#E74343" @click="bind()">
   		        绑 定 账 号
   		    </nut-button>
   		  </div>
@@ -25,19 +26,33 @@
 
 <script>
   import NavigateUtil from '../../utils/NavigateUtil';
-  var userInfo = {
-    id: "123456",
-    name: "张三",
-    type: 0,
-    avatar: "https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png",
-    call_count: 13,
-    call_time: 160
-  };
+  import user from '../../store/user.js'
+  import ApiUtil from '../../utils/ApiUtil';
+  // var userInfo = {
+  //   id: "123456",
+  //   name: "张三",
+  //   type: 0,
+  //   avatar: "https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png",
+  //   call_count: 13,
+  //   call_time: 160
+  // };
   
   export default {
+    data(){
+      return{
+        code: ""
+      }
+    },
   	methods: {
-  		change01: function() {
-  			NavigateUtil.navigateTo('/pages/my_detail/my_detail', userInfo);
+  		bind: function() {
+        let query = {
+          token: user.getToken(),
+          code: this.code
+        }
+        
+  			let res = ApiUtil.post("localhost:3000/account/login/weixin", query);
+        if(res.code !== '200') return;//return uni.$showMsg("登录失败！");
+        user.setBind(true);
   		}
   	}
   }

@@ -5,7 +5,7 @@
         <view class="text" style="height: 30%;">请您登录，以免影响正常使用</view>
         <nut-divider :hairline="false"/>
         <view class="login_button">
-          <nut-button plain type="primary" @click="change01()">
+          <nut-button plain type="primary" @click="login()">
             <img 
               src="../../static/wechat_logo.png" 
               class="img">
@@ -21,11 +21,34 @@
 
 <script>
   import NavigateUtil from '../../utils/NavigateUtil';
-    
+  import ApiUtil from '../../utils/ApiUtil';
+  import user from '../../store/user.js';
+  
     export default {
     	methods: {
-    		change01: function() {
-    			NavigateUtil.navigateTo('/pages/my_bind/my_bind');
+        
+    		login: function() {
+          
+          uni.login({
+            onlyAuthorize: true,
+            complete(resp) {
+              const err = resp.errMsg;
+              if(!err || err !== 'login:ok') return uni.$showMsg("登录失败！");
+              let query = {
+                token: resp.code
+              }
+              
+              let res = ApiUtil.post("localhost:3000/account/login/weixin", query);
+              if(res.code === 400) return;//登录失败
+              else{
+                user.setToken(res.data.token);
+                user.setType(res.data.type);
+                if (res.code === 200) user.setBind(true); //登录成功
+              }
+          
+            }
+          })
+          
     		}
     	}
     }
