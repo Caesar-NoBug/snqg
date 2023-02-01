@@ -7,7 +7,7 @@
             }
         },
         {
-            "path" : "pages/chatbox/chatbox",
+            "path" : "pages/chat/chat",
             "style" : {
                 "enablePullDownRefresh" : true
             }
@@ -26,27 +26,6 @@
             }
         },
         {
-          "path": "pages/my_bind/my_bind",
-          "style" : {
-              "navigationBarTitleText" : "",
-              "enablePullDownRefresh" : false
-          }
-        },
-        {
-          "path": "pages/my_detail/my_detail",
-          "style" : {
-              "navigationBarTitleText" : "",
-              "enablePullDownRefresh" : false
-          }
-        },
-        {
-          "path": "pages/my_login/my_login",
-          "style" : {
-              "navigationBarTitleText" : "",
-              "enablePullDownRefresh" : false
-          }
-        }
-        ,{
             "path" : "pages/call_detail/call_detail",
             "style" :                                                                                    
             {
@@ -62,6 +41,15 @@
             "enablePullDownRefresh": false
           }
         }
+        ,{
+            "path" : "pages/favorite/favorite",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
     "tabBar" : {
         "list" : [
@@ -71,7 +59,12 @@
                 "text" : "主页"
             },
             {
-                "pagePath" : "pages/chatbox/chatbox",
+              "iconPath": "static/logo.png",
+              "pagePath": "pages/favorite/favorite",
+              "text" : "关注"
+            },
+            {
+                "pagePath" : "pages/chat/chat",
                 "text" : "信箱"
             },
             {

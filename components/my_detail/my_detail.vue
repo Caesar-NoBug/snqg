@@ -10,7 +10,7 @@
   		    <span class="name">{{name}}</span>
   		    <span class="verticalLine"></span>
   		    <nut-tag plain>{{type}}</nut-tag>
-  		    <span class="id">ID:{{id}}</span>
+  		    <!-- <span class="id">ID:{{id}}</span> -->
   		    <nut-icon name="eye"></nut-icon>
   		  </span>
   		  
@@ -39,6 +39,8 @@
 <script>
   import NavigateUtil from '../../utils/NavigateUtil';
   import TimeUtil from '../../utils/TimeUtil'
+  import ApiUtil from '../../utils/ApiUtil';
+  import user from '../../store/user.js';
   
   export default{
     data() {
@@ -57,16 +59,30 @@
       },
       change02: function() {
       	NavigateUtil.navigateTo('/pages/call_history/call_history');
+      },
+      change03: function() {
+      	NavigateUtil.navigateTo('/pages/call_detail/call_detail');
+      },
+      change04: function() {
+      	NavigateUtil.navigateTo('/pages/my_settings/my_settings');
       }
     },
     onLoad(options){
-      options = NavigateUtil.getNavigateData(options);
+      let query = {
+        token: user.getToken()
+      }
+      let res = ApiUtil.post("localhost:3000/account/detail", query)
+      if(res.code !== 200) return; //return uni.$showMsg("登录失败！");
+      options = res.data;
       this.name = options.name;
-      this.id = options.id;
+      //this.id = options.id;
       this.type = options.type == 0 ? "志愿者" : "家长";
       this.avatar = options.avatar;
-      this.call_count = options.call_count;
-      this.call_time = TimeUtil.getTimeString(options.call_time);
+      let call = ApiUtil.get("localhost:3000/call/history")
+      if(res.code !== 200) return;
+      
+      this.call_count = call.call_count;
+      this.call_time = TimeUtil.getTimeString(call.call_time);
     }
   }
   
