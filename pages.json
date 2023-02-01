@@ -62,6 +62,15 @@
             "enablePullDownRefresh": false
           }
         }
+        ,{
+            "path" : "pages/my_information/my_information",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
     "tabBar" : {
         "list" : [

@@ -2,7 +2,6 @@
 	<top-bar-container :returnAble="true" title="信息统计">
 		<template #content>
 			<div class="text_date">
-			
 			</div>
 			<view>
 				<nut-cell center title='通话次数' :desc="call_count + '次'">
@@ -28,21 +27,36 @@
 </template>
 
 <script>
-	import NavigateUtil from '../../utils/NavigateUtil';
+	import ApiUtil from '../../utils/ApiUtil';
+    import NavigateUtil from '../../utils/NavigateUtil';
 	import TimeUtil from '../../utils/TimeUtil';
+	import user from '../../store/user.js';
 	let data = {
+		
 	};
+	
 	export default {
 		onLoad(option) {
-			let data = NavigateUtil.getNavigateData(option);
+		    let data = NavigateUtil.getNavigateData(option);
 			this.id = data.id;
 			this.start_time = data.start_time;
 			this.duration = data.duration;
 			this.completed = data.completed;
+			
+			let detail = detail();
+			this.id = detail.id;
+			this.start_time = detail.start_time;
+			this.duration = detail.duration;
+			this.child = detail.child;
+			this.call_count = detail.call_count;
+			this.call_time = detail.call_time;
+			
 			//uni.showModal({})
+			
 		},
 		data() {
 			return {
+				
 				id: data.id,
 				start_time: data.start_time,
 				duration: data.duration,
@@ -66,6 +80,17 @@
 			};
 		},
 		methods: {
+			
+			 detail: function(){
+				 let query = {
+					token: user.getToken()
+				 }
+				
+				 let dal = ApiUtil.get("localhost:3000/call/detail",query);
+				 if(dal.code !== '200') return uni.$showMsg("参数错误或tokenSS失效");
+			 },
+			
+			
 			getCallTimeString(time) {
 				return TimeUtil.getTimeString(time);
 			},
@@ -84,6 +109,7 @@
 			getCallSuccessDate(call_count, total_counts){
 				return TimeUtil.getCallSuccessDate(call_count, total_counts)
 			},
+			
 		}
 	}
 </script>

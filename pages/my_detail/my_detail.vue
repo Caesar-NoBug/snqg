@@ -26,7 +26,7 @@
   		</div>
   		
   		<div style="margin-top: 7%;">
-  		   <nut-cell center title="个人信息" icon="my" sub-title="查看或修改个人信息 " is-link="true"></nut-cell>
+  		   <nut-cell @click="change05()" center title="个人信息" icon="my" sub-title="查看或修改个人信息 " is-link="true"></nut-cell>
   		   <nut-cell @click="change02()" center title="通话历史" icon="comment" sub-title="查看您一年内的通话历史 " is-link="true"></nut-cell>
   		   <nut-cell @click="change03()" center title="信息统计" icon="horizontal" sub-title="统计所有通话时长及通话质量 " is-link="true"></nut-cell>
          <nut-cell @click="change04()" center title="设置" icon="setting" sub-title="设置相关功能 " is-link="true"></nut-cell>
@@ -57,7 +57,16 @@
       },
       change02: function() {
       	NavigateUtil.navigateTo('/pages/call_history/call_history');
-      }
+      },
+	  change03: function() {
+		NavigateUtil.navigateTo('/pages/call_detail/call_detail');
+	  },
+	  change04: function() {
+	  	NavigateUtil.navigateTo('/pages/my_settings/my_settings');
+	  },
+	  change05: function() {
+		NavigateUtil.navigateTo('/pages/my_information/my_information');
+	  },
     },
     onLoad(options){
       options = NavigateUtil.getNavigateData(options);

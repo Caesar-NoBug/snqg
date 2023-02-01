@@ -10,16 +10,21 @@
 			</view>
 		</template>
 	</top-bar-container>
-	
-	
+		
 </template>
 
 <script>
 import NavigateUtil from '../../utils/NavigateUtil';
-import TimeUtil from '../../utils/TimeUtil'
+import TimeUtil from '../../utils/TimeUtil';
+import user from '../../store/user.js';
+
 	export default {
+		
+		
+		
 		data() {
 			return {
+				 
 				call_count: 1,
 				call_time: 14263,
 				calls: [{
@@ -39,6 +44,16 @@ import TimeUtil from '../../utils/TimeUtil'
 			}
 		},
 		methods: {
+			
+			 history: function(){
+				 let query = {
+					
+					token: user.getToken()
+					
+				 }
+				return ApiUtil.get("localhost:3000/call/history",query);
+			 },
+			
 			getCallDateString(time) {
 				return TimeUtil.getDateString(time);
 			},
