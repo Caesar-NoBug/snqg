@@ -1,13 +1,23 @@
 <template>
-  <top-bar-container :returnAble="true" :title="child_name">
+  <top-bar-container :returnAble="true" :title="child_name" >
 	<template #content>
 		<div class="top">
-		<view class="icon">
-		    <nut-icon @click="change01" name="date" color="#fa2c19"></nut-icon>
-			<nut-icon @click="change02" name="dongdong" color="#fa2c19"></nut-icon>
-			<nut-icon @click="change03" name="more-x" color="#fa2c19"></nut-icon>
-		</view>
-		
+			<span style="margin-left: 48%;font-weight: 200;font-size: 80%;">
+				{{state}}
+			</span>
+			<span style="margin-left: 15%;">
+				<span style="margin-right:15px ;font-size: 0;"><img src="/static/日历.png" @click="change01()" class="img" style="width: 30px;height: 30px"></span>
+				<span style="margin-right:10px ;font-size: 0;"><img src="/static/视频监控.png" class="img" @click="change02()" style="width: 30px;height: 30px"></span>
+				<span style="margin-right:5px ;font-size: 0;"><img src="/static/更多.png" class="img" @click="change03()" style="width: 30px;height: 30px"></span>
+			</span>
+			<div>
+			<nut-divider hairline></nut-divider>
+			<div style="margin-left: 36%;">
+			<nut-button @click="componentClick" plain type="primary">查看最近预约</nut-button>
+			</div>
+			<nut-dialog :title="title" :close-on-click-overlay="false" :content="appointment" v-model:visible="visible"></nut-dialog>
+			
+			</div>
 		</div>
 		<template >
 		<div class="input">
@@ -32,20 +42,35 @@
 	
 	export default{
 		setup() {
-		      const state = reactive({
+		    const state = reactive({
 		        buttonVal: ''
 		      });
+			const visible = ref(false);
+			const title = '最近预约';
+			const content = '';
+			const componentClick = () => {
+			      visible.value = true;
+			    };
 		      return {
-		        state
+		        state,
+				visible,
+				title,
+				content,
+				componentClick,
 		      };
 		    },
 		data(){
 			
 			return{
-				
+			state: "在线",	//数字，0为下线，1为上线
 			child_name: "卞文静",
+			appointment: "04/20 6:20",
+			
 			}
 		
+		},
+		methods: {
+			
 		},
 	}
 	
@@ -56,10 +81,10 @@
 		/* margin-top: 20px; */
 		/* text-align: center; */
 	/* } */
-	.icon{
-		margin-left: 85%;
+	.top_text{
+		text-align: center;
 	}
-	
+
 	.input{
 		margin-top: 625px;
 	}
