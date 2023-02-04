@@ -1,18 +1,24 @@
+//用户登录状态： 0，未登录  1，登录但未绑定 2，登录成功
+var state = 0;
 
 function setToken(newToken){
   uni.setStorageSync('token', newToken);
 };
 
 function getToken(){
-  return uni.getStorageSync('token') || '{}';
-}
+  uni.getStorageSync('token') || '{}';
+};
 
 function setBind(isBind){
   uni.setStorageSync('isBind', isBind);
 }
 
-function getBind(){
-  return uni.getStorageSync('isBind') || false;
+function getState(){
+  let token = uni.getStorageSync('token') || '{}';
+  let isBind = uni.getStorageSync('isBind') || false;
+  if(token === '{}') return 0;
+  else if(!isBind) return 1;
+  else return 2;
 }
 
 function setType(type){
@@ -27,15 +33,10 @@ export default {
   setToken,
   getToken,
   setBind,
-  getBind,
   setType,
   getType,
+  getState,
   }
-
-
-
-
-
 
 // import Vue from 'vue'
 // import Vuex from 'vuex'

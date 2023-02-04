@@ -28,7 +28,7 @@
     	methods: {
         
     		login: function() {
-          
+          let _this = this;
           uni.login({
             onlyAuthorize: true,
             complete(resp) {
@@ -37,14 +37,17 @@
               let query = {
                 token: resp.code
               }
-              
-              let res = ApiUtil.post("localhost:3000/account/login/weixin", query);
-              if(res.code === 400) return;//登录失败
-              else{
-                user.setToken(res.data.token);
-                user.setType(res.data.type);
-                if (res.code === 200) user.setBind(true); //登录成功
-              }
+      
+              user.setToken("token");
+              uni.$emit("updateState", {});
+              //调api时打开下面的代码并删除上两行代码
+              // let res = ApiUtil.post("localhost:3000/account/login/weixin", query);
+              // if(res.code === 400) return;//登录失败
+              // else{
+              //   user.setToken(res.data.token);
+              //   user.setType(res.data.type);
+              //   if (res.code === 200) user.setBind(true); //登录成功
+              // }
           
             }
           })

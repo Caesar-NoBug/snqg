@@ -51,6 +51,7 @@
 			this.call_count = detail.call_count;
 			this.call_time = detail.call_time;
 			
+      
 			//uni.showModal({})
 			
 		},
