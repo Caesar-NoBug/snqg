@@ -10,8 +10,20 @@ export default class TimeUtil {
 	}
 	static getMomentString(time: number): string {
 		let date: Date = new Date(time * 1000);
-		return (date.getHours() + 1) + ":" + (date.getMinutes() + 1);
+    let hour = date.getHours();
+    if(hour < 10) hour = "0" + hour;
+    let minute = date.getMinutes();
+    if(minute < 10) minute = "0" + minute;
+		return hour + ":" + minute;
 	}
+  static getExactTimeString(time: number): string {
+    let pastDate: Date = new Date(time * 1000);
+    let currDate: Date = new Date();
+    let currDay: number = currDate.getTime() - (currDate.getHours() * 60 * 60 + currDate.getMinutes() * 60 + currDate.getSeconds()) * 1000;
+    if(pastDate.getTime() - currDay >= 0) return this.getMomentString(time);
+    else if(currDay - pastDate.getTime() <= 24 * 60 * 60 * 1000) return "昨天" + this.getMomentString(time);
+    else return this.getDateString(time);
+  }
 	// 声明通话平均时长
 	static getAverageString(call_count: number, call_time: number): string{
 		return (call_time/call_count + "小时");

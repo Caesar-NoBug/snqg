@@ -1,6 +1,4 @@
 <template>
-  <top-bar-container title="我的">
-  	<template #content>
   		<div class="head">
   		  <nut-avatar
   		      size="large"
@@ -10,7 +8,7 @@
   		    <span class="name">{{name}}</span>
   		    <span class="verticalLine"></span>
   		    <nut-tag plain>{{type}}</nut-tag>
-  		    <!-- <span class="id">ID:{{id}}</span> -->
+  		    <span class="id">ID:{{id}}</span>
   		    <nut-icon name="eye"></nut-icon>
   		  </span>
   		  
@@ -32,8 +30,6 @@
          <nut-cell @click="change04()" center title="设置" icon="setting" sub-title="设置相关功能 " is-link="true"></nut-cell>
   		</div>
   		
-  	</template>
-  </top-bar-container>
 </template>
 
 <script>
@@ -68,21 +64,22 @@
       }
     },
     onLoad(options){
-      let query = {
-        token: user.getToken()
-      }
-      let res = ApiUtil.post("localhost:3000/account/detail", query)
-      if(res.code !== 200) return; //return uni.$showMsg("登录失败！");
-      options = res.data;
-      this.name = options.name;
-      //this.id = options.id;
-      this.type = options.type == 0 ? "志愿者" : "家长";
-      this.avatar = options.avatar;
-      let call = ApiUtil.get("localhost:3000/call/history")
-      if(res.code !== 200) return;
+      //调试时打开
+      // let query = {
+      //   token: user.getToken()
+      // }
+      // let res = ApiUtil.post("localhost:3000/account/detail", query)
+      // if(res.code !== 200) return; //return uni.$showMsg("登录失败！");
+      // options = res.data;
+      // this.name = options.name;
+      // //this.id = options.id;
+      // this.type = options.type == 0 ? "志愿者" : "家长";
+      // this.avatar = options.avatar;
+      // let call = ApiUtil.get("localhost:3000/call/history")
+      // if(res.code !== 200) return;
       
-      this.call_count = call.call_count;
-      this.call_time = TimeUtil.getTimeString(call.call_time);
+      // this.call_count = call.call_count;
+      // this.call_time = TimeUtil.getTimeString(call.call_time);
     }
   }
   
