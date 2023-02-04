@@ -63,24 +63,31 @@
     "tabBar" : {
         "list" : [
             {
-                "iconPath": "static/logo.png",
+                "iconPath": "static/main.png",
+                "selectedIconPath": "static/main-active.png",
                 "pagePath" : "pages/main/main",
                 "text" : "主页"
             },
             {
-              "iconPath": "static/logo.png",
+              "iconPath": "static/favor.png",
+              "selectedIconPath": "static/favor-active.png",
               "pagePath": "pages/favorite/favorite",
               "text" : "关注"
             },
             {
+                "iconPath": "static/chat.png",
+                "selectedIconPath": "static/chat-active.png",
                 "pagePath" : "pages/chat/chat",
                 "text" : "信箱"
             },
             {
+                "iconPath": "static/my.png",
+                "selectedIconPath": "static/my-active.png",
                 "pagePath" : "pages/my/my",
                 "text" : "我的"
             }
-        ]
+        ],
+        "selectedColor": "#E74343"
     },
     "globalStyle" : {
         "navigationBarTextStyle" : "black",

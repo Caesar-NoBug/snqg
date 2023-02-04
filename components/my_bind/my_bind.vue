@@ -1,6 +1,4 @@
 <template>
-  <top-bar-container title="我的">
-  	<template #content>
   		<div style="margin-top: 10%; color: #E74343; font-size: 24px; text-align: center; font-weight: bold;">
   		  账 号 绑 定
   		</div>
@@ -19,8 +17,6 @@
   		        绑 定 账 号
   		    </nut-button>
   		  </div>
-  	</template>
-  </top-bar-container>
   
 </template>
 
@@ -49,10 +45,12 @@
           token: user.getToken(),
           code: this.code
         }
-        
-  			let res = ApiUtil.post("localhost:3000/account/login/weixin", query);
-        if(res.code !== '200') return;//return uni.$showMsg("登录失败！");
         user.setBind(true);
+        uni.$emit("updateState", {});
+         //调api时打开下面的代码并删除上一行代码
+  			// let res = ApiUtil.post("localhost:3000/account/login/weixin", query);
+        //if(res.code !== '200') return;//return uni.$showMsg("登录失败！");
+        //user.setBind(true);
   		}
   	}
   }
