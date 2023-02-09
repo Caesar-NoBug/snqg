@@ -4,6 +4,11 @@
 			<nut-button @click="func1()">个人信息</nut-button>
       <nut-button @click="func2()">通话历史</nut-button>
       <nut-button @click="func3()">通话详情</nut-button>
+      <nut-button @click="func4()">通话界面</nut-button>
+      <div style="background-color: beige;">
+        <img src="https://tva1.sinaimg.cn/large/0086QolKgy1hax4o3jsrhj301c01c3ya.jpg">
+      </div>
+      
 		</template>
 	</top-bar-container>
 </template>
@@ -21,6 +26,9 @@
       },
       func3: function() {
       	NavigateUtil.navigateTo('/pages/call_detail/call_detail');
+      },
+      func4: function() {
+      	NavigateUtil.navigateTo('/pages/chat_call/chat_call');
       }
 		}
 
