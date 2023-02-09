@@ -5,9 +5,7 @@
       <nut-button @click="func2()">通话历史</nut-button>
       <nut-button @click="func3()">通话详情</nut-button>
       <nut-button @click="func4()">通话界面</nut-button>
-      <div style="background-color: beige;">
-        <img src="https://tva1.sinaimg.cn/large/0086QolKgy1hax4o3jsrhj301c01c3ya.jpg">
-      </div>
+      
       
 		</template>
 	</top-bar-container>
