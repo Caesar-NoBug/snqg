@@ -52,6 +52,22 @@
                 "navigationBarTitleText" : "",
                 "enablePullDownRefresh" : false
             }
+        },
+        {
+          "path": "pages/chat_dock/chat_dock",
+          "style": {
+            "navigationBarTitleText" : "",
+            "enablePullDownRefresh" : false
+          }
+        }
+        ,{
+            "path" : "pages/chat_call/chat_call",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
         }
     ],
     "tabBar" : {
@@ -87,7 +103,7 @@
         "selectedColor": "#E74343"
     },
     "globalStyle" : {
-        "navigationBarTextStyle" : "black",
+        "navigationBarTextStyle" : "white",
         "navigationBarTitleText" : "少年强国",
         "navigationBarBackgroundColor" : "#E74343",
         "backgroundColor" : "#F8F8F8",

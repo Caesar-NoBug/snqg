@@ -6,13 +6,14 @@
 				{{state}}
 			</span>
 			<span style="margin-left: 15%;">
-				<span style="margin-right:15px ;font-size: 0;"><img src="/static/日历.png" @click="change01()" class="img" style="width: 30px;height: 30px"></span>
-				<span style="margin-right:10px ;font-size: 0;"><img src="/static/视频监控.png" class="img" @click="change02()" style="width: 30px;height: 30px"></span>
-				<span style="margin-right:5px ;font-size: 0;"><img src="/static/更多.png" class="img" @click="change03()" style="width: 30px;height: 30px"></span>
+				<span style="margin-right:15px ;font-size: 0;"><img src="/static/日历.png" @click="change01()" class="img" style="width: 26px;height: 26px"></span>
+				<span style="margin-right:10px ;font-size: 0;"><img src="/static/视频监控.png" class="img" @click="change02()" style="width: 26px;height: 26px"></span>
+				<span style="margin-right:5px ;font-size: 0;"><img src="/static/更多.png" class="img" @click="change03()" style="width: 26px;height: 26px"></span>
 			</span>
 			<div>
 			<nut-divider hairline></nut-divider>
 			<div style="margin-left: 36%;">
+        
 			<nut-button @click="componentClick" plain type="primary">查看最近预约</nut-button>
 			</div>
 			<nut-dialog :title="title" :close-on-click-overlay="false" :content="appointment" v-model:visible="visible"></nut-dialog>
@@ -128,10 +129,16 @@
 	}
 
 	.input{
-		margin-top: 625px;
+		position: fixed;
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    bottom: 2%;
+    border: 1px solid lightgray;
+    border-radius: 14px;
 	}
 	.chat{
-	  height: 500px;
+	  height: 100%;
 	}
 	
 	.chat-ls{
@@ -168,6 +175,7 @@
 	}
 	
 	.msg-text-left{
+    text-align: center;
 	  margin-top: 10px;
 	  margin-left: 6px;
 	  background-color: #fff;
@@ -178,6 +186,7 @@
 	}
 	
 	.msg-text-right{
+    text-align: center;
 	  margin-top: 10px;
 	  margin-right: 6px;
 	  background-color: lightgray;
