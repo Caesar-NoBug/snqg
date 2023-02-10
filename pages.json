@@ -69,6 +69,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/call_state/call_state",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
     "tabBar" : {
         "list" : [
