@@ -35,7 +35,6 @@
 <script>
   import NavigateUtil from '../../utils/NavigateUtil';
   import TimeUtil from '../../utils/TimeUtil'
-  import ApiUtil from '../../utils/ApiUtil';
   import user from '../../store/user.js';
   
   export default{
@@ -64,22 +63,21 @@
       }
     },
     onLoad(options){
-      //调试时打开
-      // let query = {
-      //   token: user.getToken()
-      // }
-      // let res = ApiUtil.post("localhost:3000/account/detail", query)
-      // if(res.code !== 200) return; //return uni.$showMsg("登录失败！");
-      // options = res.data;
-      // this.name = options.name;
-      // //this.id = options.id;
-      // this.type = options.type == 0 ? "志愿者" : "家长";
-      // this.avatar = options.avatar;
-      // let call = ApiUtil.get("localhost:3000/call/history")
-      // if(res.code !== 200) return;
+      let user_detail = user.getDetail();
+      console.log(user_detail)
+      this.id = user_detail.id;
+      this.name = user_detail.name;
+      switch(user_detail.type){
+        case 0: this.type = "志愿者"; break;
+        case 1: this.type = "家长"; break;
+        case 2: this.type = "儿童"; break;
+      }
+      this.avatar = user_detail.avatar;
+      this.call_count = user_detail.call_count;
+      this.call_time = TimeUtil.getTimeString(user_detail.call_time);
+    },
+    onShow(){
       
-      // this.call_count = call.call_count;
-      // this.call_time = TimeUtil.getTimeString(call.call_time);
     }
   }
   

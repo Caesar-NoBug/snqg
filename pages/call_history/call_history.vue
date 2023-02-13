@@ -51,7 +51,7 @@ import user from '../../store/user.js';
 					token: user.getToken()
 					
 				 }
-				return ApiUtil.get("localhost:3000/call/history",query);
+				//return ApiUtil.get("localhost:3000/call/history",query);
 			 },
 			
 			getCallDateString(time) {

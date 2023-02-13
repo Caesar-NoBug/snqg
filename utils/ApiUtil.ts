@@ -2,12 +2,16 @@ import service from './http'
 import md5 from 'crypto-js/md5'
 
 export default class ApiUtil {
-    static get(url: string, data: any) {
+    static async get(url: string, data: any) {
+      let res;
         if (data == null) {
-            return service.get(url);
+            res = await service.get(url);
         }
-        let authedString = this.getAuthedString(data);
-        return service.get(url + "?" + authedString);
+        else{
+          let authedString = this.getAuthedString(data);
+          res = await service.get(url + "?" + authedString);
+        }
+        return res;
     }
 
     static post(url: string, data: any) {

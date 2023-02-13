@@ -27,7 +27,7 @@
 </template>
 
 <script>
-	import ApiUtil from '../../utils/ApiUtil';
+	//import ApiUtil from '../../utils/ApiUtil';
     import NavigateUtil from '../../utils/NavigateUtil';
 	import TimeUtil from '../../utils/TimeUtil';
 	import user from '../../store/user.js';
@@ -87,7 +87,7 @@
 					token: user.getToken()
 				 }
 				
-				 let dal = ApiUtil.get("localhost:3000/call/detail",query);
+				 //let dal = ApiUtil.get("localhost:3000/call/detail",query);
 				 if(dal.code !== '200') return uni.$showMsg("参数错误或tokenSS失效");
 			 },
 			

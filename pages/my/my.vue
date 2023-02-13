@@ -14,6 +14,7 @@
   export default {
     data() {
       return {
+        
       }
     },
   	methods: {
@@ -21,7 +22,7 @@
   	}
   }
   
-  
+  user.getState()
 </script>
 
 <style>
