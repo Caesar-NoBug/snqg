@@ -5,6 +5,7 @@
       <nut-button @click="func2()">通话历史</nut-button>
       <nut-button @click="func3()">通话详情</nut-button>
       <nut-button @click="func4()">通话界面</nut-button>
+      <nut-button @click="func5()">拨入提醒界面</nut-button>
 		</template>
 	</top-bar-container>
 </template>
@@ -28,7 +29,10 @@
       },
       func4: function() {
       	NavigateUtil.navigateTo('/pages/chat_call/chat_call');
-      }
+      },
+	  func5: function() {
+	  	NavigateUtil.navigateTo('/pages/call_state/call_state');
+	  },
 		}
 
 	}

@@ -38,7 +38,7 @@
 			return {
 				navBarHeight: app.globalData.navBarHeight,
         loading_visible: true,
-        state: 0,
+        state: 2,
 			};
 		},
     onShow() {
