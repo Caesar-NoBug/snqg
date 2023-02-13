@@ -5,15 +5,16 @@
       <nut-button @click="func2()">通话历史</nut-button>
       <nut-button @click="func3()">通话详情</nut-button>
       <nut-button @click="func4()">通话界面</nut-button>
-      
-      
 		</template>
 	</top-bar-container>
 </template>
 
 <script>
 	import NavigateUtil from '../../utils/NavigateUtil';
-	
+	//import {APIUtil} from '../../api/APIUtils'
+  import axios from '../../utils/http.js'
+  import ApiUtil from '../../utils/ApiUtil'
+  
 	export default {
 		methods: {
 			func1: function() {
@@ -31,6 +32,7 @@
 		}
 
 	}
+
 </script>
 
 <style>

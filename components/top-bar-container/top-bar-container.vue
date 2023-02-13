@@ -43,7 +43,6 @@
 		},
     onShow() {
       this.loading_visible = true;
-      
       this.updateState();
       
       setTimeout(() => {
@@ -54,6 +53,8 @@
       uni.$on("updateState", function(data) {
         _this.updateState();
       });
+      
+      user.check();
     },
     methods: {
       updateState: function(){

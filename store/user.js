@@ -1,12 +1,13 @@
+import axios from '../utils/http.js'
 //用户登录状态： 0，未登录  1，登录但未绑定 2，登录成功
-var state = 0;
+var state = 0; 
 
 function setToken(newToken){
   uni.setStorageSync('token', newToken);
 };
 
 function getToken(){
-  uni.getStorageSync('token') || '{}';
+  return uni.getStorageSync('token') || '{}';
 };
 
 function setBind(isBind){
@@ -29,6 +30,35 @@ function getType(){
   return uni.getStorageSync('type') || 0;
 }
 
+function check(){
+  let token =  uni.getStorageSync("token");
+  if(token){
+    axios({
+      method: "GET",
+      url: "https://ystrength.hokago.eu.org/account/detail",
+      params: {
+        "token": token,
+      }
+    }).then(res => {
+      if(res.code === 200){
+        if(getDetail())
+          setDetail(res.data.user_detail);
+      }else if(res.code === 403){
+        setToken("");
+        setBind(false);
+      } 
+    })
+  } 
+}
+
+function getDetail(){
+  return JSON.parse(uni.getStorageSync("detail") || null);
+}
+
+function setDetail(user_detail){
+  uni.setStorageSync("detail", JSON.stringify(user_detail));
+}
+
 export default {
   setToken,
   getToken,
@@ -36,46 +66,7 @@ export default {
   setType,
   getType,
   getState,
+  getDetail,
+  setDetail,
+  check,
   }
-
-// import Vue from 'vue'
-// import Vuex from 'vuex'
-// Vue.use(Vuex);
-
-// export default new Vuex.Store({
-//   state:{
-//     token: uni.getStorageInfoSync('token') || '{}',
-//     isBind: uni.getStorageInfoSync('isBind') || false
-//   },
-//   mutations:{
-//     setToken(state, token) {
-//       state.token = token;
-//       uni.setStorageSync('token', state.token);
-//     },
-//     setBind(isBind) {
-//       state.isBind = isBind;
-//       uni.setStorageSync('isBind', isBind);
-//     }
-//   }
-// })
-
-
-
-// //   namespaced: true,
-  
-// //   state:() => ({
-// //     token: uni.getStorageInfoSync('token') || '{}',
-// //     isBind: uni.getStorageInfoSync('isBind') || false
-// //   }),
-  
-// //   mutations: {
-// //     setToken(state, token) {
-// //       state.token = token;
-// //       uni.setStorageSync('token', state.token);
-// //     },
-// //     setBind(isBind) {
-// //       state.isBind = isBind;
-// //       uni.setStorageSync('isBind', isBind);
-// //     }
-// //   }
-// // }
