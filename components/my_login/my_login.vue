@@ -21,38 +21,43 @@
 
 <script>
   import NavigateUtil from '../../utils/NavigateUtil';
-  import ApiUtil from '../../utils/ApiUtil';
-  import user from '../../store/user.js';
   
+  import user from '../../store/user.js';
+  import axios from '../../utils/http.js'
+
     export default {
     	methods: {
         
-    		login: function() {
-          let _this = this;
+        login: function() {
+          
           uni.login({
             onlyAuthorize: true,
             complete(resp) {
               const err = resp.errMsg;
               if(!err || err !== 'login:ok') return uni.$showMsg("登录失败！");
-              let query = {
-                token: resp.code
-              }
-      
-              user.setToken("token");
-              uni.$emit("updateState", {});
-              //调api时打开下面的代码并删除上两行代码
-              // let res = ApiUtil.post("localhost:3000/account/login/weixin", query);
-              // if(res.code === 400) return;//登录失败
-              // else{
-              //   user.setToken(res.data.token);
-              //   user.setType(res.data.type);
-              //   if (res.code === 200) user.setBind(true); //登录成功
-              // }
-          
+              let token = resp.code;
+              axios({
+                method: 'POST',
+                url: "https://ystrength.hokago.eu.org/account/login/weixin",
+                params: {
+                  'token': token
+                }
+              }).then(res =>{
+                if(res.code === 400) return;//登录失败
+                  else{
+                    user.setToken(res.data.token);
+                    if (res.code === 200){//登录成功
+                      user.setType(res.data.user_detail_min.type);
+                      user.setBind(true);
+                      let user_detail = res.data.user_detail_min;
+                      user.setDetail(user_detail);
+                    } 
+                    uni.$emit("updateState", {});
+                  }
+              })
             }
           })
-          
-    		}
+        }
     	}
     }
 </script>
