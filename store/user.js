@@ -35,7 +35,7 @@ function check(){
   if(token){
     axios({
       method: "GET",
-      url: "https://ystrength.hokago.eu.org/account/detail",
+      url: "https://ystrength.hokago.eu.org/account/detail/min",
       params: {
         "token": token,
       }

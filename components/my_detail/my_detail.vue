@@ -86,6 +86,7 @@
 
 <style>
   .head{
+    top: 5%;
     margin-left: 5%;
     display: flex;
   }
