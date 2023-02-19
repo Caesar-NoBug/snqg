@@ -2,7 +2,7 @@
 	<view :style="{position: 'fixed', zIndex: 9999, top: 0, left: 0, width: '100%'}">
 		<top-bar :returnAble="returnAble" :title="title"></top-bar>
 	</view>
-	<view :style="{marginTop: navBarHeight + 55 + 'px'}">
+	<view :style="{marginTop: navBarHeight + 45 + 'px'}">
     <view v-if="!loading_visible">
       <my_login v-if="state === 0"></my_login>
       <my_bind v-else-if="state === 1"></my_bind>

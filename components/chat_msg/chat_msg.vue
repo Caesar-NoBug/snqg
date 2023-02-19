@@ -72,10 +72,12 @@
 
 <style>
 .background{
+  top: 0;
   height: 750px;
   background-color: #EFEFEF;
 }
 .topBlock{
+  top: 0;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
