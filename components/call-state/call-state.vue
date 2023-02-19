@@ -1,5 +1,7 @@
 <template>
-		<view class="mask">
+	<nut-overlay v-model:visible="show">
+	    <div class="wrapper">
+			<div class="content">
 				<view class="picture">
 					<nut-avatar size="large" icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png">
 					</nut-avatar>
@@ -8,19 +10,28 @@
 				<view class="button">
 					<nut-button type="primary"  size="large">查看详情</nut-button>
 				</view>
-		</view>			
+			</div>
+		</div>
+	</nut-overlay>
 </template>
 
 <script>
 	import NavigateUtil from '../../utils/NavigateUtil';
 	import axios from 'axios';
 	import user from '../../store/user.js';
-	
+	import { reactive, toRefs } from 'vue';
 	export default {
 		name:"call-state",
+		props: {},
+		setup() {
+		    const state = reactive({
+				show: true
+		    });
+		    return { ...toRefs(state) };
+		    },
 		data() {
 			return {
-				
+				name:"张三",
 			};
 		},
 		methods: {
@@ -47,17 +58,25 @@
 </script>
 
 <style>
-.mask{
-	margin:0 auto;
-	width: 86%;
-	position: absolute;
-	top: 32%;
-	left: 6.5%;
-	background-color: cornsilk;
-	border: 3rpx solid #faca82;
-	border-radius: 10rpx;
+.wrapper {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+	/* display: flex; */
+    width: 350px;
+    height: 225px;
+    background: #fff;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    color: black;
+  
 }
 .picture{
+	margin-top: 2%;
 	margin-left: 39%;
 }
 .name{
@@ -65,7 +84,8 @@
 	margin-top: 5%;
 }
 .button{
-	margin-left: 0%;
+	/* margin-left: 0%; */
 	margin-top: 5%;
+	margin-bottom: 3%;
 }
 </style>
