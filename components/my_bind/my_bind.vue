@@ -23,7 +23,7 @@
 <script>
   import NavigateUtil from '../../utils/NavigateUtil';
   import user from '../../store/user.js'
-  import ApiUtil from '../../utils/ApiUtil';
+  import axios from '../../utils/http.js'
   // var userInfo = {
   //   id: "123456",
   //   name: "张三",
@@ -41,16 +41,24 @@
     },
   	methods: {
   		bind: function() {
-        let query = {
-          token: user.getToken(),
-          code: this.code
-        }
-        user.setBind(true);
-        uni.$emit("updateState", {});
-         //调api时打开下面的代码并删除上一行代码
-  			// let res = ApiUtil.post("localhost:3000/account/login/weixin", query);
-        //if(res.code !== '200') return;//return uni.$showMsg("登录失败！");
-        //user.setBind(true);
+        console.log(this.code)
+        console.log(user.getToken())
+        axios({
+          method: 'POST',
+          url: 'https://ystrength.hokago.eu.org/account/bind/weixin',
+          params: {
+            "token": user.getToken(),
+            "invite_code": this.code,
+          }
+        }).then(res =>{
+          console.log(res)
+          if(res.code === 200){//绑定成功
+              user.setBind(true);
+              let user_detail = res.data.user_detail_min;
+              user.setDetail(user_detail);
+              uni.$emit("updateState", {});
+          }
+        })
   		}
   	}
   }

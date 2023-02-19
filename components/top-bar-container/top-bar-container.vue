@@ -50,7 +50,6 @@
 		},
     onShow() {
       this.loading_visible = true;
-      
       this.updateState();
 	  
       setTimeout(() => {
@@ -62,10 +61,14 @@
       uni.$on("updateState", function(data) {
         _this.updateState();
       });
+
 	  
 	  setInterval(()=>{
 		  this.calling = res.data.calling;
 	  });
+
+      user.check();
+
     },
     methods: {
       updateState: function(){

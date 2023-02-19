@@ -3,34 +3,30 @@ import {UniAdapter} from "uniapp-axios-adapter";
 
 // create an axios instance
 const service = axios.create({
-	baseURL: 'http://localhost:3000/', // url = base url + request url
+	baseURL: '', // url = base url + request url
 	//withCredentials: true, // send cookies when cross-domain requests 注意：withCredentials和后端配置的cross跨域不可同时使用
 	timeout: 6000, // request timeout
 	crossDomain: true,
 })
  
 // request拦截器,在请求之前做一些处理
-service.interceptors.request.use(config => {
-		//添加请求头
-		// config.headers["accessToken"] = "123";
-		console.log('请求拦截成功')
-		return config;
-	},
-	error => {
-		console.log(error); // for debug
-		return Promise.reject(error);
-	}
-);
+// service.interceptors.request.use(config => {
+// 		//添加请求头
+// 		// config.headers["accessToken"] = "123";
+// 		console.log('请求拦截成功')
+// 		return config;
+// 	},
+// 	error => {
+// 		console.log(error); // for debug
+// 		return Promise.reject(error);
+// 	}
+// );
  
 //配置成功后的拦截器
 service.interceptors.response.use(res => {
-	if (res.data.code == 200) {
 		return res.data
-	} else {
-		return Promise.reject(res.data.msg);
-	}
 }, error => {
-	return Promise.reject(error)
+	return Promise.reject(error);
 })
 
 // axios.defaults.adapter = function(config) {
