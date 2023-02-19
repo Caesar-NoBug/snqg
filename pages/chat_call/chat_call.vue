@@ -1,7 +1,5 @@
 <template>
-      <web-view :webview-styles="webviewStyles" :src="'http://localhost:8080/callee.html?name=' + name" style="height: 64rem; width: 128rem;">
-        
-      </web-view>
+       <web-view :webview-styles="webviewStyles" :src="'http://localhost:8080/calling.html?name=' + name" style="height: 64rem; width: 128rem;">
   
  
   
