@@ -8,7 +8,7 @@
 					</view>	
 					<view class="name">{{name}}邀请您视频通话</view>
 					<view class="button">
-						<nut-button type="primary"  size="large">查看详情</nut-button>
+						<nut-button type="primary"  size="large" plain>查看详情</nut-button>
 					</view>
 			</view>			
 		</template>
@@ -18,12 +18,20 @@
 
 <script>
 import NavigateUtil from '../../utils/NavigateUtil';
-import ApiUtil from '../../utils/ApiUtil';
+import axios from 'axios';
 import user from '../../store/user.js';
 
-	let time = setInterval(()=>{
-	    console.log("轮询中...")
-	}, 5000);
+	
+	worker.onmessage = e =>{
+		if(data.calling === 1){
+			let time = setInterval(()=>{
+				
+			}, 5000);
+		}
+		else{
+			return 0;
+		}
+	};
 	
 	
 	export default {
@@ -31,18 +39,27 @@ import user from '../../store/user.js';
 		data() {
 			// timer: null,
 			return {
-				name:"卞文静",
+				
 			}
 		},
 		methods: {
 			// talk: function(){
 			// 	NavigateUtil.navigateTo('/pages/');
 			// }
-			static: function(){
-				let query = {
-					token: user.getToken()
-				}
-				return ApiUtil.get("localhost:3000/call/state",query);
+			state: function(){
+				
+				axios.request({
+					method: 'GET',
+					url: "https://ystrength.hokago.eu.org/call/state",
+				}).then(res =>{
+					if (res.code === 403) return;//参数错误或token失效
+					else{
+						if (res.code === 200){//操作成功
+							return res.data;
+						}
+					}
+					
+				})
 			}
 		},
 		// onShow: function () {
@@ -67,8 +84,8 @@ import user from '../../store/user.js';
 	position: absolute;
 	top: 32%;
 	left: 6.5%;
-	background-color: cornsilk;
-	border: 3rpx solid #faca82;
+	background-color: #fabcb1;
+	border: 3rpx solid #fa2c19;
 	border-radius: 10rpx;
 }
 .picture{

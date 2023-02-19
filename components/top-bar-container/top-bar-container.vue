@@ -16,10 +16,16 @@
          >
          </nut-dialog>
 	</view>
+	<view>
+		<view v-if="calling === 1">
+			<call-state></call-state>
+		</view>
+	</view>
 </template>
 
 <script>
   import user from '../../store/user.js';
+  import axios from 'axios';
 	const app = getApp();
   
 	export default {
@@ -39,31 +45,51 @@
 				navBarHeight: app.globalData.navBarHeight,
         loading_visible: true,
         state: 2,
+		calling: 0,
 			};
 		},
     onShow() {
       this.loading_visible = true;
       this.updateState();
-      
+	  
       setTimeout(() => {
         this.loading_visible = false;
       }, 1000);
-      
+	  
+     
       let _this = this;
       uni.$on("updateState", function(data) {
         _this.updateState();
       });
-      
+
+	  
+	  setInterval(()=>{
+		  this.calling = res.data.calling;
+	  });
+
       user.check();
+
     },
     methods: {
       updateState: function(){
         this.state = user.getState();
-      }
+      },
+	  state: function(){
+	  	
+	  	axios.request({
+	  		method: 'GET',
+	  		url: "https://ystrength.hokago.eu.org/call/state",
+	  	}).then(res =>{
+	  		if(res.code === 200){
+	  		 return res.data.calling;
+	  		}else if(res.code === 403){
+	  		 return 0;
+	  		} 
+	  	})
+	  },
     }
 	}
 </script>
 
 <style scoped>
-
 </style>

@@ -17,6 +17,7 @@
 import NavigateUtil from '../../utils/NavigateUtil';
 import TimeUtil from '../../utils/TimeUtil';
 import user from '../../store/user.js';
+import axios from 'axios';
 
 	export default {
 		
@@ -25,32 +26,43 @@ import user from '../../store/user.js';
 		data() {
 			return {
 				 
-				call_count: 1,
-				call_time: 14263,
-				calls: [{
-					id: "2931830120A",
-					start_time: 1665814186,
-					duration: 14263,
-					completed: 1,
-					name: "张三",
-					// 加入name进行尝试，待data完成后进行删除
-				}, {
-					id: "293183012AD",
-					start_time: 1665814192,
-					duration: 14261,
-					completed: 1,
-					name: "李四",
-				}]
+				// call_count: 1,
+				// call_time: 14263,
+				// calls: [{
+				// 	id: "2931830120A",
+				// 	start_time: 1665814186,
+				// 	duration: 14263,
+				// 	completed: 1,
+				// 	name: "张三",
+				// 	// 加入name进行尝试，待data完成后进行删除
+				// }, {
+				// 	id: "293183012AD",
+				// 	start_time: 1665814192,
+				// 	duration: 14261,
+				// 	completed: 1,
+				// 	name: "李四",
+				// }]
 			}
 		},
 		methods: {
 			
 			 history: function(){
-				 let query = {
+				
+				axios.request({
+					method: 'GET',
+					url: "https://ystrength.hokago.eu.org/call/history",
+				}).then(res =>{
+					if (res.code === 403) return;//参数错误或token失效
+					else{
+						if (res.code === 200){//操作成功
+							return res.data;
+						}
+					}
 					
-					token: user.getToken()
-					
-				 }
+
+				})
+				}
+
 				//return ApiUtil.get("localhost:3000/call/history",query);
 			 },
 			
@@ -64,7 +76,7 @@ import user from '../../store/user.js';
 				return TimeUtil.getMomentString(time);
 			}
 		}
-	}
+	
 </script>
 
 <style>
