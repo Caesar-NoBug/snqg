@@ -17,32 +17,38 @@
            v-model:visible="loading_visible"
          >
          </nut-dialog>
-	</view>
+ </view>
+ <view>
+ 	<view v-if="calling === 1">
+ 		<call-state></call-state>
+ 	</view>
+ </view>
 </template>
 
 <script>
   import user from '../../store/user.js';
-	const app = getApp();
+ const app = getApp();
   
-	export default {
-		name: "top-bar-container",
-		props: {
-			returnAble: {
-				type: Boolean,
-				default: false
-			}, //是否显示返回icon
-			title: {
-				type: String,
-				default: ''
-			}, //文字标题
-		},
-		data() {
-			return {
-				navBarHeight: app.globalData.navBarHeight,
+ export default {
+  name: "top-bar-container",
+  props: {
+   returnAble: {
+    type: Boolean,
+    default: false
+   }, //是否显示返回icon
+   title: {
+    type: String,
+    default: ''
+   }, //文字标题
+  },
+  data() {
+   return {
+    navBarHeight: app.globalData.navBarHeight,
         loading_visible: true,
         state: 0,
-			};
-		},
+		calling: 1,
+   };
+  },
     mounted() {
       console.log(0)
       this.loading_visible = true;
@@ -58,13 +64,31 @@
       });
       
       user.check();
+	  
+	  setInterval(() =>{
+	  	this.calling = res.data.calling;
+	  	console.log("轮询..");
+	  },5000);
     },
     methods: {
-      updateState: function(){
-        this.state = user.getState();
-      }
+		updateState: function(){
+			this.state = user.getState();
+		},
+		state: function(){
+			
+			axios.request({
+				method: 'GET',
+				url: "https://ystrength.hokago.eu.org/call/state",
+			}).then(res =>{
+				if(res.code === 200){
+				 return res.data.calling;
+				}else if(res.code === 403){
+				 return 0;
+				} 
+			})
+		},
     }
-	}
+ }
   
   
 </script>

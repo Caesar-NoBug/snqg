@@ -45,7 +45,7 @@
         console.log(user.getToken())
         axios({
           method: 'POST',
-          url: 'https://ystrength.hokago.eu.org/account/bind/weixin',
+          url: 'https://ystrength-api.hokago.eu.org/account/bind/weixin',
           params: {
             "token": user.getToken(),
             "invite_code": this.code,
