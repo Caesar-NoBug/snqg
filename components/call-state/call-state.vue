@@ -8,7 +8,9 @@
 				</view>	
 				<view class="name">{{name}}邀请您视频通话</view>
 				<view class="button">
-					<nut-button type="primary"  size="large" @click="goToCall()">查看详情</nut-button>
+					<div class="locaton">
+						<nut-button type="danger" size="large" @click="goToCall()">查看详情</nut-button>
+					</div>
 				</view>
 			</div>
 		</div>
@@ -83,14 +85,17 @@
 }
 .picture{
 	margin-top: 2%;
-	margin-left: 39%;
+	margin-left: 37%;
 }
 .name{
 	margin-left: 30%;
 	margin-top: 5%;
 }
+.locaton{
+	width: 90%;
+}
 .button{
-	/* margin-left: 0%; */
+	margin-left: 9%;
 	margin-top: 5%;
 	margin-bottom: 3%;
 }
