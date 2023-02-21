@@ -37,7 +37,7 @@
 	
 	export default {
 		onLoad(option) {
-		    let data = NavigateUtil.getNavigateData(option);
+		  let data = NavigateUtil.getNavigateData(option);
 			this.id = data.id;
 			this.start_time = data.start_time;
 			this.duration = data.duration;

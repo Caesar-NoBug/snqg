@@ -12,6 +12,8 @@
            teleport="#app"
            title="加载中..."
            content="请稍后"
+           noOkBtn="true"
+           noCancelBtn="true"
            v-model:visible="loading_visible"
          >
          </nut-dialog>
@@ -41,7 +43,8 @@
         state: 0,
 			};
 		},
-    onShow() {
+    mounted() {
+      console.log(0)
       this.loading_visible = true;
       this.updateState();
       
@@ -62,6 +65,8 @@
       }
     }
 	}
+  
+  
 </script>
 
 <style scoped>
