@@ -9,7 +9,7 @@
 				<view class="name">{{name}}邀请您视频通话</view>
 				<view class="button">
 					<div class="locaton">
-						<nut-button type="danger" size="large" >查看详情</nut-button>
+						<nut-button type="danger" size="large" @click="goToCall()">查看详情</nut-button>
 					</div>
 				</view>
 			</div>
@@ -40,11 +40,17 @@
 			// talk: function(){
 			// 	NavigateUtil.navigateTo('/pages/');
 			// }
+      goToCall: function(){
+        let param = {
+          data: "callee"
+        };
+        NavigateUtil.navigateTo("/pages/chat_call/chat_call", param);
+      },
 			state: function(){
 				
 				axios.request({
 					method: 'GET',
-					url: "https://ystrength.hokago.eu.org/call/state",
+					url: "https://ystrength-api.hokago.eu.org/call/state",
 				}).then(res =>{
 					if (res.code === 403) return;//参数错误或token失效
 					else{

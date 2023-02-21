@@ -38,7 +38,7 @@
               let token = resp.code;
               axios({
                 method: 'POST',
-                url: "https://ystrength.hokago.eu.org/account/login/weixin",
+                url: "https://ystrength-api.hokago.eu.org/account/login/weixin",
                 params: {
                   'token': token
                 }

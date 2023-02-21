@@ -104,17 +104,24 @@
 			  type: 0,
 			  content: "?"
 			}]
-			};
+			}
 		
 		},
-		methods: {
+    methods: {
+      change02: function(){
+        console.log(123)
+        let param = {
+          data: "caller",
+        };
+        NavigateUtil.navigateTo("/pages/chat_call/chat_call", param);
+      },
 			changeTime: function(time){
 			  const updateInterval = 120;//超过两分钟则视为一段新的对话，显示新的对话开始时间
 			  let res = '';
 			  if(time - updatedTime > updateInterval) res = TimeUtil.getExactTimeString(time);
 			  updatedTime = time;
 			  return res;
-		},
+		  }
 	}
 }
 </script>

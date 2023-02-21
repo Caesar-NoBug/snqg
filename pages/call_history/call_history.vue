@@ -50,7 +50,7 @@ import axios from 'axios';
 				
 				axios.request({
 					method: 'GET',
-					url: "https://ystrength.hokago.eu.org/call/history",
+					url: "https://ystrength-api.hokago.eu.org/call/history",
 				}).then(res =>{
 					if (res.code === 403) return;//参数错误或token失效
 					else{
