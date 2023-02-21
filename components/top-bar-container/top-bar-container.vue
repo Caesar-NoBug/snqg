@@ -68,7 +68,7 @@
 	  setInterval(() =>{
 	  	this.calling = res.data.calling;
 	  	console.log("轮询..");
-	  });
+	  },5000);
     },
     methods: {
 		updateState: function(){
