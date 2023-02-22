@@ -11,7 +11,7 @@ import NavigateUtil from '../../utils/NavigateUtil';
     onLoad(option){
       option = NavigateUtil.getNavigateData(option);
       console.log(option);
-      if(option.data == "caller") this.src = "https://ystrength.hokago.eu.org/#//jump/calling-prepare?token=";
+      if(option.data == "caller") this.src = "https://ystrength.hokago.eu.org/#/jump/calling-prepare?token=";
       else if(option.data == "callee") this.src = "https://ystrength.hokago.eu.org/#/jump/calling-dialog?token=";
       console.log(this.src);
     },
