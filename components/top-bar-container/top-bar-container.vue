@@ -4,8 +4,8 @@
 	</view>
 	<view :style="{marginTop: navBarHeight + 45 + 'px'}">
     <view v-if="!loading_visible">
-      <my_login v-if="state === 0"></my_login>
-      <my_bind v-else-if="state === 1"></my_bind>
+      <my_login v-if="state == 0"></my_login>
+      <my_bind v-else-if="state == 1"></my_bind>
       <slot name="content" v-else></slot>
     </view>
      <nut-dialog
@@ -27,9 +27,11 @@
 
 <script>
   import user from '../../store/user.js';
+  import axios from '../../utils/http.js';
  const app = getApp();
   
  export default {
+   
   name: "top-bar-container",
   props: {
    returnAble: {
@@ -46,7 +48,7 @@
     navBarHeight: app.globalData.navBarHeight,
         loading_visible: true,
         state: 0,
-		calling: 1,
+        calling: 0,
    };
   },
     mounted() {
@@ -58,34 +60,45 @@
         this.loading_visible = false;
       }, 1000);
       
-      let _this = this;
+      var _this = this;
       uni.$on("updateState", function(data) {
+        console.log(12)
         _this.updateState();
       });
       
       user.check();
 	  
+    
 	  setInterval(() =>{
-	  	this.calling = res.data.calling;
-	  	console.log("轮询..");
+	  console.log(_this.state)
+		axios.request({
+			method: 'GET',
+			url: "https://ystrength-api.hokago.eu.org/call/state",
+			params: {
+			  'token': user.getToken()
+			},
+		}).then(res =>{
+      console.log(res)
+			if(res.code === 200){
+			 this.calling = res.data.calling;
+			}else{
+			 this.calling = 0;
+			} 
+		});
+		
 	  },5000);
     },
     methods: {
 		updateState: function(){
+      let lastState = this.state;
 			this.state = user.getState();
+      
+      if(lastState != this.state)
+        uni.$emit("refresh", {});
 		},
 		state: function(){
 			
-			axios.request({
-				method: 'GET',
-				url: "https://ystrength.hokago.eu.org/call/state",
-			}).then(res =>{
-				if(res.code === 200){
-				 return res.data.calling;
-				}else if(res.code === 403){
-				 return 0;
-				} 
-			})
+			
 		},
     }
  }

@@ -21,8 +21,6 @@ import axios from 'axios';
 
 	export default {
 		
-		
-		
 		data() {
 			return {
 				 
@@ -51,11 +49,12 @@ import axios from 'axios';
 				axios.request({
 					method: 'GET',
 					url: "https://ystrength-api.hokago.eu.org/call/history",
+          token: user.getToken(),
 				}).then(res =>{
 					if (res.code === 403) return;//参数错误或token失效
 					else{
 						if (res.code === 200){//操作成功
-							return res.data;
+							//这里把数据存进来
 						}
 					}
 					
