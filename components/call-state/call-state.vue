@@ -3,7 +3,7 @@
 	    <div class="wrapper">
 			<div class="content">
 				<view class="picture">
-					<nut-avatar size="large" icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png">
+					<nut-avatar size="large" :icon = "avatar">
 					</nut-avatar>
 				</view>	
 				<view class="name">{{name}}邀请您视频通话</view>
@@ -33,7 +33,9 @@
 		    },
 		data() {
 			return {
-				name:"张三",
+				// name:"张三",
+				name,
+				avatar
 			};
 		},
 		methods: {
@@ -51,11 +53,15 @@
 				axios.request({
 					method: 'GET',
 					url: "https://ystrength-api.hokago.eu.org/call/state",
+					params: {
+					  'token': user.getToken()
+					},
 				}).then(res =>{
 					if (res.code === 403) return;//参数错误或token失效
 					else{
 						if (res.code === 200){//操作成功
-							return res.data;
+							this.name = res.data.name;
+							this.avatar = res.data.avatar;
 						}
 					}
 					

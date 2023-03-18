@@ -14,17 +14,17 @@
   export default {
     onLoad() {
     
-      uni.$on("refresh", function(data) {
-        console.log(12)
-        const pages = getCurrentPages()
-                // 声明一个pages使用getCurrentPages方法
-                const curPage = pages[pages.length - 1]
-                // 声明一个当前页面
-                curPage.onLoad(curPage.options) // 传入参数
-                curPage.onShow()
-                curPage.onReady()
+      // uni.$on("refresh", function(data) {
+      //   console.log(12)
+      //   const pages = getCurrentPages()
+      //           // 声明一个pages使用getCurrentPages方法
+      //           const curPage = pages[pages.length - 1]
+      //           // 声明一个当前页面
+      //           curPage.onLoad(curPage.options) // 传入参数
+      //           curPage.onShow()
+      //           curPage.onReady()
        
-      });
+      // });
     },
     data() {
       return {
