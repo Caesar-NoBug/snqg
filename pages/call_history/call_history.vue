@@ -23,7 +23,8 @@ import axios from 'axios';
 		
 		data() {
 			return {
-				 
+				 name,
+				 start_time,
 				// call_count: 1,
 				// call_time: 14263,
 				// calls: [{
@@ -49,12 +50,14 @@ import axios from 'axios';
 				axios.request({
 					method: 'GET',
 					url: "https://ystrength-api.hokago.eu.org/call/history",
-          token: user.getToken(),
+					token: user.getToken(),
 				}).then(res =>{
 					if (res.code === 403) return;//参数错误或token失效
 					else{
 						if (res.code === 200){//操作成功
 							//这里把数据存进来
+							this.name = res.data.user.name;
+							this.start_time = res.data.start_time;
 						}
 					}
 					

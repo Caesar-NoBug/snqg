@@ -6,9 +6,9 @@
 				{{state}}
 			</span>
 			<span style="margin-left: 15%;">
-				<span style="margin-right:15px ;font-size: 0;"><img src="/static/日历.png" @click="change01()" class="img" style="width: 26px;height: 26px"></span>
-				<span style="margin-right:10px ;font-size: 0;"><img src="/static/视频监控.png" class="img" @click="change02()" style="width: 26px;height: 26px"></span>
-				<span style="margin-right:5px ;font-size: 0;"><img src="/static/更多.png" class="img" @click="change03()" style="width: 26px;height: 26px"></span>
+				<span style="margin-right:15px ;font-size: 0;"><img src="/static/date.png" @click="change01()" class="img" style="width: 26px;height: 26px"></span>
+				<span style="margin-right:10px ;font-size: 0;"><img src="/static/video.png" class="img" @click="change02()" style="width: 26px;height: 26px"></span>
+				<span style="margin-right:5px ;font-size: 0;"><img src="/static/more.png" class="img" @click="change03()" style="width: 26px;height: 26px"></span>
 			</span>
 			<div>
 			<nut-divider hairline></nut-divider>
