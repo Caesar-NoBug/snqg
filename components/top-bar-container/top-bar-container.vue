@@ -116,7 +116,7 @@
 				};
 				axios.request({
 					method: 'GET',
-					url: "https://ystrength-api.hokago.eu.org/call/state",
+					url: "api/call/state",
 					params: {
 						'token': user.getToken()
 					},

@@ -36,9 +36,10 @@
               const err = resp.errMsg;
               if(!err || err !== 'login:ok') return uni.$showMsg("登录失败！");
               let token = resp.code;
+              //console.log("baseUrl: " + axios.baseUrl);
               axios({
                 method: 'POST',
-                url: "https://ystrength-api.hokago.eu.org/account/login/weixin",
+                url: "api/account/login/weixin",
                 params: {
                   'token': token
                 }

@@ -17,7 +17,7 @@
 		},
 
 		globalData: {
-			navBarHeight: 0, // 导航栏高度
+			navBarHeight: 0,
 		}
 	}
 </script>
