@@ -65,47 +65,12 @@
 
 			user.check();
 
-
-			//  var polling = setInterval(() =>{
-			// console.log(_this.state);
-			// axios.request({
-			// 	method: 'GET',
-			// 	url: "https://ystrength-api.hokago.eu.org/call/state",
-			// 	params: {
-			// 	  'token': user.getToken()
-			// 	},
-			// }).then(res =>{
-			// console.log(res)
-			// 	if(res.code === 200){
-			// 	 this.calling = res.data.calling;
-			// 	}else{
-			// 	 this.calling = 0;
-			// 	} 
-			// });
-			// if(calling === 1){
-			// 	clearInterval(polling);
-			// };
-			//  },5000);
 			let that = this;
 			setInterval(() => {
 				this.polling()
 			}, 5000);
 
 		},
-
-		// created() {
-		// 	let that = this;
-		// 	this.setData({
-		// 		interval: setInterval(() => {that.polling},5000)
-		// 	})
-		// },
-
-		// created() {
-		// 	let that = this;
-		// 	if(calling === 1){
-		// 		clearInterval(that.data.interval);
-		// 	}
-		// },
 
 		methods: {
 			polling: function() {

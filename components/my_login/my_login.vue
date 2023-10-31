@@ -30,12 +30,23 @@
         
         login: function() {
           
-          uni.login({
+          uni.getUserProfile({
+            desc:'获取用户信息',
+            success: function(res) {
+              console.log(res.userInfo);
+            },
+            fail:function(res){
+              console.log(res.errMsg)
+            }
+          })
+          
+          wx.login({
             onlyAuthorize: true,
             complete(resp) {
               const err = resp.errMsg;
               if(!err || err !== 'login:ok') return uni.$showMsg("登录失败！");
               let token = resp.code;
+              console.log(resp)
               //console.log("baseUrl: " + axios.baseUrl);
               axios({
                 method: 'POST',
@@ -58,6 +69,8 @@
               })
             }
           })
+          
+        
         }
     	}
     }
