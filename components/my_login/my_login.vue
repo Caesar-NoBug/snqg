@@ -30,27 +30,35 @@
         
         login: function() {
           
-          uni.login({
+          wx.login({
             onlyAuthorize: true,
             complete(resp) {
               const err = resp.errMsg;
               if(!err || err !== 'login:ok') return uni.$showMsg("登录失败！");
               let token = resp.code;
+              console.log(resp)
               //console.log("baseUrl: " + axios.baseUrl);
               axios({
                 method: 'POST',
-                url: "api/account/login/weixin",
+                headers: {
+                      'Content-Type': 'application/json'
+                },
+                url: "children/login",
                 params: {
-                  'token': token
+                  'code': token
                 }
               }).then(res =>{
-                if(res.code === 400) return;//登录失败
-                  else{
+                console.log(res)
+                if(res.code !== 400){
+                  return;//登录失败
+                } 
+                else{
                     user.setToken(res.data.token);
                     if (res.code === 200){//登录成功
-                      user.setType(res.data.user_detail_min.type);
+                      
+                      user.setType(res.data.type);
                       user.setBind(true);
-                      let user_detail = res.data.user_detail_min;
+                      let user_detail = res.data;
                       user.setDetail(user_detail);
                     } 
                     uni.$emit("updateState", {});
@@ -58,6 +66,8 @@
               })
             }
           })
+          
+        
         }
     	}
     }

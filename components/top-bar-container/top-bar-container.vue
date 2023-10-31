@@ -4,9 +4,11 @@
 	</view>
 	<view :style="{marginTop: navBarHeight + 45 + 'px'}">
 		<view v-if="!loading_visible">
-			<my_login v-if="state == 0"></my_login>
+      <!-- 不要删这段代码，这是运行时的逻辑 -->
+			<!-- <my_login v-if="state == 0"></my_login>
 			<my_bind v-else-if="state == 1"></my_bind>
-			<slot name="content" v-else></slot>
+			<slot name="content" v-else></slot> -->
+      <slot name="content"></slot>
 		</view>
 		<nut-dialog teleport="#app" title="加载中..." content="请稍后" noOkBtn="true" noCancelBtn="true"
 			v-model:visible="loading_visible">
@@ -65,47 +67,13 @@
 
 			user.check();
 
-
-			//  var polling = setInterval(() =>{
-			// console.log(_this.state);
-			// axios.request({
-			// 	method: 'GET',
-			// 	url: "https://ystrength-api.hokago.eu.org/call/state",
-			// 	params: {
-			// 	  'token': user.getToken()
-			// 	},
-			// }).then(res =>{
-			// console.log(res)
-			// 	if(res.code === 200){
-			// 	 this.calling = res.data.calling;
-			// 	}else{
-			// 	 this.calling = 0;
-			// 	} 
-			// });
-			// if(calling === 1){
-			// 	clearInterval(polling);
-			// };
-			//  },5000);
 			let that = this;
-			setInterval(() => {
-				this.polling()
-			}, 5000);
+      //TODO: 这里是全局轮询获取信息
+			// setInterval(() => {
+			// 	this.polling()
+			// }, 5000);
 
 		},
-
-		// created() {
-		// 	let that = this;
-		// 	this.setData({
-		// 		interval: setInterval(() => {that.polling},5000)
-		// 	})
-		// },
-
-		// created() {
-		// 	let that = this;
-		// 	if(calling === 1){
-		// 		clearInterval(that.data.interval);
-		// 	}
-		// },
 
 		methods: {
 			polling: function() {
@@ -130,11 +98,11 @@
 				// console.log(2223);
 			},
 			updateState: function() {
+        console.log("pre state:" + this.state)
 				const _this = this;
 				let lastState = this.state;
 				let currentState = user.getState();
 				this.state = currentState;
-
 				console.log("state:" + this.state)
 
 				if (lastState != this.state)

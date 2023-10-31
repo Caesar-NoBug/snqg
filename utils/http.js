@@ -3,7 +3,7 @@ import {UniAdapter} from "uniapp-axios-adapter";
 
 // create an axios instance
 const service = axios.create({
-	baseURL: 'https://shaonian.neugxy.com/', // url = base url + request url
+	baseURL: 'http://127.0.0.1:23456/', // url = base url + request url
 	//withCredentials: true, // send cookies when cross-domain requests 注意：withCredentials和后端配置的cross跨域不可同时使用
 	timeout: 6000, // request timeout
 	crossDomain: true,
