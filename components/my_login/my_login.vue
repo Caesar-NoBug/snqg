@@ -37,20 +37,27 @@
               if(!err || err !== 'login:ok') return uni.$showMsg("登录失败！");
               let token = resp.code;
               //console.log("baseUrl: " + axios.baseUrl);
+              console.log(resp)
               axios({
                 method: 'POST',
-                url: "api/account/login/weixin",
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                url: "children/login",
                 params: {
-                  'token': token
+                  'code': token
                 }
               }).then(res =>{
-                if(res.code === 400) return;//登录失败
+                if(res.code === 400)
+				{
+					NavigateUtil.navigateTo('/components/my_bind/my_bind');
+				}//登录失败
                   else{
                     user.setToken(res.data.token);
                     if (res.code === 200){//登录成功
-                      user.setType(res.data.user_detail_min.type);
+                      user.setType(res.data.role);
                       user.setBind(true);
-                      let user_detail = res.data.user_detail_min;
+                      let user_detail = res.data;
                       user.setDetail(user_detail);
                     } 
                     uni.$emit("updateState", {});

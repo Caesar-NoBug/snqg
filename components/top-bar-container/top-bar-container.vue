@@ -5,10 +5,10 @@
 	<view :style="{marginTop: navBarHeight + 45 + 'px'}">
 		<view v-if="!loading_visible">
       <!-- 不要删这段代码，这是运行时的逻辑 -->
-			<!-- <my_login v-if="state == 0"></my_login>
-			<my_bind v-else-if="state == 1"></my_bind>
-			<slot name="content" v-else></slot> -->
-      <slot name="content"></slot>
+			<my_login v-if="state == 0"></my_login>
+			<!-- <my_bind v-else-if="state == 1"></my_bind> -->
+			<slot name="content" v-else></slot>
+      <!-- <slot name="content"></slot> -->
 		</view>
 		<nut-dialog teleport="#app" title="加载中..." content="请稍后" noOkBtn="true" noCancelBtn="true"
 			v-model:visible="loading_visible">
