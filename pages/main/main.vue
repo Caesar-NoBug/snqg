@@ -16,7 +16,7 @@
 	  <div class="title-box">
 		  <p>&nbsp;|&nbsp;|&nbsp;|&nbsp;&nbsp;继续加油哦！</p>
 	  </div >
-	  <div class="img-box">
+	  <!-- <div class="img-box">
 		  <nut-avatar size="large">
 		     <img class="image" src="../../test-wh/Snipaste_2023-11-02_19-41-05.png" alt="图片"  @click="handleImageClick(0)">
 			  </nut-avatar>
@@ -37,7 +37,7 @@
 			 </nut-avatar>
 			 
 			 
-	  </div>
+	  </div> -->
 	  <div class="stereo-box">
 	    <p class="text">{{ message }}</p>
 	  </div>
@@ -45,7 +45,7 @@
 		
 		
 	<!-- 	//成就任务 -->
-		<div class="infoBody">
+		<!-- <div class="infoBody">
 		  <nut-cellgroup>
 		    <nut-cell @click="func9()" title="我的成就和荣誉" center sub-title="继续坚持完成学习任务获得更多荣誉勋章" desc="进入" is-link="true">
 		      <template v-slot:icon>
@@ -53,7 +53,7 @@
 		      </template>
 		    </nut-cell>
 		  </nut-cellgroup>
-		</div>
+		</div> -->
 		</template>
 		
 	</top-bar-container>
