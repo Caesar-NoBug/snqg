@@ -2,7 +2,8 @@
   <top-bar-container :returnAble="true" :title="child_name" >
 	<template #content>
 		<div class="top">
-			<span style="margin-left: 48%;font-weight: 200;font-size: 80%;">
+			
+			<span style="margin-left: 46.5%;font-weight: 200;font-size: 80%;">
 				{{state}}
 			</span>
 			<span style="margin-left: 15%;">
@@ -10,12 +11,13 @@
 				<span style="margin-right:10px ;font-size: 0;"><img src="/static/video.png" class="img" @click="change02()" style="width: 26px;height: 26px"></span>
 				<span style="margin-right:5px ;font-size: 0;"><img src="/static/more.png" class="img" @click="change03()" style="width: 26px;height: 26px"></span>
 			</span>
+			<div class="middle-div">
+			<span style="font-weight: 200;font-size: 80%;font-size: 16px;">
+				{{volunteer_name}}
+			</span>
+			</div>
 			<div>
 			<nut-divider hairline></nut-divider>
-			<div style="margin-left: 36%;">
-        
-			<nut-button @click="componentClick" plain type="primary">查看最近预约</nut-button>
-			</div>
 			<nut-dialog :title="title" :close-on-click-overlay="false" :content="appointment" v-model:visible="visible"></nut-dialog>
 			</div>
 		</div>
@@ -36,9 +38,9 @@
 		</scroll-view>
 		<template >
 		<div class="input">
-		  <nut-input v-model="state.buttonVal" placeholder="请输入您想说的话" clearable center >
+		  <nut-input v-model="message.buttonVal" placeholder="请输入您想说的话"  center>
 		    <template #button>
-		      <nut-button size="small" type="primary">发送</nut-button>
+		      <nut-button @click="sendMessage(message.buttonVal,formatTime())" size="small" type="primary">发送</nut-button>
 		    </template>
 		  </nut-input>
 		</div>	
@@ -57,9 +59,10 @@
 	var updatedTime = 0;
 	export default{
 		name:"chat_test",
+		
 		setup() {
-		    const state = reactive({
-		        buttonVal: ''
+		    const message = reactive({
+		        text: ''
 		      });
 			const visible = ref(false);
 			const title = '最近预约';
@@ -68,7 +71,7 @@
 			      visible.value = true;
 			    };
 		      return {
-		        state,
+		        message,
 				visible,
 				title,
 				content,
@@ -80,6 +83,7 @@
 			return{
 			state: "在线",	//数字，0为下线，1为上线
 			child_name: "卞文静",
+			volunteer_name: "张三",
 			appointment: "04/20 6:20",
 			myAvatar: "https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png",
 			hisAvatar: "https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png",
@@ -102,12 +106,44 @@
 			  fromMe: false,
 			  time: new Date().getTime() / 1000,
 			  type: 0,
-			  content: "?"
+			  content: "你是小傻子"
 			}]
 			}
 		
 		},
+		onLoad(param) {
+			const option = NavigateUtil.getNavigateData(param);
+			this.volunteer_name = option.data;
+		},
     methods: {
+
+		sendMessage(text,time) {
+			
+			
+			this.msgs.push({
+			  fromMe: true,
+			  time: time, // 使用当前时间戳作为消息时间
+			  type: 0,
+			  content: text,
+			});
+			
+			this.message.buttonVal=""
+			
+		},
+		formatTime() {
+		  const now = new Date();
+		  let hours = now.getHours();
+		  let minutes = now.getMinutes();
+		
+		 
+		
+		  // 如果分钟小于10，前面加上0
+		  minutes = minutes < 10 ? '0' + minutes : minutes;
+		
+		
+		  const formattedTime =  hours + ':' + minutes 
+		  return formattedTime;
+		},
       change02: function(){
         console.log(123)
         let param = {
@@ -191,7 +227,24 @@
 	  border: 1px solid lightgray;
 	  border-radius: 14px;
 	}
-	
+	.volunteer-name {
+		display: flex; /* 使用 Flex 布局 */
+		justify-content: center; /* 水平居中 */
+		
+		 
+		  background-color: #f0f0f0; /* 背景颜色 */
+		  border: 1px solid #000000; /* 边框线，1像素宽，黑色 */
+		  display: inline-block; /* 将容器设置为内联块元素 */
+		 padding: 10px; /* 可选：为内容添加内边距 */
+		 border-radius: 10px; /* 圆角半径为10像素 */
+		background-color: #f0f0f0; /* 背景颜色 */
+		
+		  
+	}
+	.middle-div{
+		display: flex; /* 使用 Flex 布局 */
+		justify-content: center; /* 水平居中 */
+	}
 	.msg-text-right{
     text-align: center;
 	  margin-top: 10px;

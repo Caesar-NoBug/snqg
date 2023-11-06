@@ -17,7 +17,7 @@
         </div>
         <div class="infoBody">
           <nut-cellgroup>
-            <nut-cell @click="gotoDock()" v-for="info in infos" :title="info.name" center :sub-title="info.detail" :desc="getTime(info.time)" is-link="true">
+            <nut-cell @click="gotoDock(info.name)" v-for="info in infos" :title="info.name" center :sub-title="info.detail" :desc="getTime(info.time)" is-link="true">
               <template v-slot:icon>
                   <img :src="info.avater" style="width: 30px; height: 30px; margin-right: 10px;"/>
               </template>
@@ -31,9 +31,32 @@
 <script>
   import TimeUtil from '../../utils/TimeUtil'
   import NavigateUtil from '../../utils/NavigateUtil';
+  import axios from '../../utils/http.js'
+  import user from '../../store/user.js';
   
   export default {
     name:"chat_info",
+	mounted() {
+		console.log(1111);
+		axios({
+		  method: 'GET',
+		  headers: {
+		    'Content-Type': 'application/x-www-form-urlencoded',
+			'token' : user.getToken(),
+		  },
+		  url: "/chat/friend/list",
+		  
+		}).then(res =>{
+			console.log(res);
+		  if(res.code === 400)
+		{
+			console.log(400);
+		}
+		if (res.code === 200){
+		    console.log(200)
+	  } 
+		})
+	},
     data() {
       return {
         infos: [{
@@ -61,9 +84,12 @@
       getTime1: function(){
         return TimeUtil.getMomentString(new Date().getTime() / 1000);
       },
-      gotoDock: function(){
+      gotoDock: function(name){
         console.log(0)
-        NavigateUtil.navigateTo('/pages/chat_dock/chat_dock');
+		let param = {
+		  data: name,
+		};
+		NavigateUtil.navigateTo("/pages/chat_dock/chat_dock", param);
         console.log(1)
       }
     }
