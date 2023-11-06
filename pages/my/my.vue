@@ -52,7 +52,7 @@
 		</view>
 	</div>
 	<div class="exit">
-		<nut-button block type="primary">退出登录</nut-button>
+		<nut-button block type="primary" @click="change04()">退出登录</nut-button>
 	</div>
 	
 </template>
@@ -82,7 +82,11 @@
 	  	NavigateUtil.navigateTo('/pages/call_detail/call_detail');
 	  },
 	  change04: function() {
-	  	NavigateUtil.navigateTo('/pages/my_settings/my_settings');
+	  	//退出登录
+		uni.removeStorageSync('token');
+		uni.removeStorageSync('isBind');
+		uni.removeStorageSync('detail');
+		NavigateUtil.navigateTo('/pages/my_information/my_information');
 	  }
 	},
 	
