@@ -68,7 +68,22 @@
                 "enablePullDownRefresh": false
             }
             
-        }
+        },
+		{
+		    "path" : "pages/achievement/achievement",
+		    "style" : {
+				"navigationBarTitleText": "",
+		        "enablePullDownRefresh" : false
+		    }
+		},
+		{
+		    "path" : "components/my_bind/my_bind",
+		    "style" : {
+				"navigationBarTitleText": "",
+		        "enablePullDownRefresh" : false
+		    }
+		},
+		
     ],
     "tabBar" : {
         "list" : [

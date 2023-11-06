@@ -83,7 +83,9 @@
         "setting" : {
             "urlCheck" : false,
             "postcss" : true,
-            "es6" : true
+            "es6" : true,
+			"ignoreDevUnusedFiles": false,
+			"ignoreUploadUnusedFiles": false
         },
         "usingComponents" : true
     },
