@@ -29,13 +29,13 @@
 				<div class="bill_text">积分明细</div>
 			</div>
 			<div class="point_store">
-				<view class="store_image">
+				<view @click="change02()" class="store_image">
 				    <image style="width: 40px; height: 40px;" mode="aspectFit" src="./../static/store.png"></image>
 				</view>
 				<div class="store_text">积分商城</div>
 			</div>
 			<div class="point_ranking">
-				<view class="ranking_image">
+				<view @click="change03()" class="ranking_image">
 				    <image style="width: 40px; height: 40px;" mode="aspectFit" src="./../static/ranking.png"></image>
 				</view>
 				<div class="ranking_text">积分排名</div>
