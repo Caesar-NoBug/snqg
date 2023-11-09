@@ -75,6 +75,61 @@
 				"navigationBarTitleText": "",
 		        "enablePullDownRefresh" : false
 		    }
+		},
+		{
+		    "path" : "components/RankShow/RankShow",
+		    "style" : {
+				"navigationBarTitleText": "",
+		        "enablePullDownRefresh" : false
+		    }
+		},
+		{
+			"path" : "components/totalpoint/totalpoint",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/LookRank/LookRank",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "components/achivement/achivement",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "components/encourage/encourage",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "components/achivemententrance/achivemententrance",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "components/todaydata/todaydata",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 		
     ],

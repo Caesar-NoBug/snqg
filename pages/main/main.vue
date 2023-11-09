@@ -6,12 +6,13 @@
       <nut-button @click="func3()">通话详情</nut-button>
       <nut-button @click="func4()">通话界面</nut-button>
       <nut-button @click="func5()">拨入提醒界面</nut-button>
-	
       <nut-button @click="func6()">主页-日程界面</nut-button>
 	  <nut-button @click="func7()">主页-关注界面</nut-button>
 	  <nut-button @click="func8()">主页-推荐界面</nut-button>
+	   <nut-button @click="lookRank()">主页-查看排名</nut-button>
+
 	  
-	 //鼓励任务 -->
+	 
 	 <div class="big-box">
 	  <div class="title-box">
 		  <p>&nbsp;|&nbsp;|&nbsp;|&nbsp;&nbsp;继续加油哦！</p>
@@ -111,9 +112,10 @@
 			func8: function() {
 				NavigateUtil.navigateTo('/components/main_recommend/main_recommend');
 			},
-			func9: function() {
-				NavigateUtil.navigateTo('/pages/achievement/achievement');
+			lookRank: function() {
+				NavigateUtil.navigateTo('/pages/LookRank/LookRank');
 			},
+			
 			handleImageClick(i){
 				if(i == 0)
 				{this.message = "对我们来说，不是把一块肉割出来给大家分，而是大家互助互利、共赢。如果我切给你，这是零和游戏，不叫共赢。大家只有共赢，才能长远共同走下去。";}
@@ -181,7 +183,7 @@
 	flex: 0 0 auto;
   width: 80px; /* 设置图片的宽度
   height: auto; /* 高度自适应，保持宽高比例 */
-  border-radius: 50% */
+  border-radius: 50%
 }
 .text {
 overflow-wrap: break-word;
