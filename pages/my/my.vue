@@ -1,60 +1,61 @@
 <template>
-	<div class="banner">
-	    <!-- 利用一个标签的背景制作了大盒子的背景效果 -->
-	    <div class="banner-bg"></div>
-	    <!-- 下面是滑动焦点图部分 -->
-	</div>
-	<div class="avatar">
-		<nut-avatar size="large">
-		<img :src="avatar" />
-		</nut-avatar>
-	</div>
-	<div class="my_info">
-	    <div class="text-large">{{name}}</div>
-	    <div class="text-small">{{address}}</div>
-	</div>
-	<div class="my_point_background"></div>
-	<div class="my_point">
-		<div class="point_number">{{point}}</div>
-		<div class="point_text">积分</div>
-	</div>
-	<div class="split_line"></div>
-	<div class="point_detail">
-		<div class="blank_container1"></div>
-		<div class="point_container">
-			<div class="point_bills">
-				<view @click="change01()" class="bill_image">
-				    <image style="width: 40px; height: 40px;" mode="aspectFit" src="./../static/bill.png"></image>
-				</view>
-				<div class="bill_text">积分明细</div>
+	<login-check>
+		<template #content>
+			<div class="banner">
+				<div class="banner-bg"></div>
 			</div>
-			<div class="point_store">
-				<view @click="change02()" class="store_image">
-				    <image style="width: 40px; height: 40px;" mode="aspectFit" src="./../static/store.png"></image>
-				</view>
-				<div class="store_text">积分商城</div>
+			<div class="avatar">
+				<nut-avatar size="large">
+				<img :src="avatar" />
+				</nut-avatar>
 			</div>
-			<div class="point_ranking">
-				<view @click="change03()" class="ranking_image">
-				    <image style="width: 40px; height: 40px;" mode="aspectFit" src="./../static/ranking.png"></image>
-				</view>
-				<div class="ranking_text">积分排名</div>
+			<div class="my_info">
+				<div class="text-large">{{username}}</div>
+				<div class="text-small">{{address}}</div>
 			</div>
-		</div>
-		<div class="blank_container2"></div>
-	</div>
-	<div class="my_ranking_background">
-		<div class="ranking_progress_text">排名进步</div>
-	</div>
-	<div class="progress_chart">
-		<view>
-			<progress_chart></progress_chart>
-		</view>
-	</div>
-	<div class="exit">
-		<nut-button block type="primary" @click="change04()">退出登录</nut-button>
-	</div>
-	
+			<div class="my_point_background"></div>
+			<div class="my_point">
+				<div class="point_number">{{point}}</div>
+				<div class="point_text">积分</div>
+			</div>
+			<div class="split_line"></div>
+			<div class="point_detail">
+				<div class="blank_container1"></div>
+				<div class="point_container">
+					<div class="point_bills">
+						<view @click="change01()" class="bill_image">
+							<image style="width: 40px; height: 40px;" mode="aspectFit" src="./../static/bill.png"></image>
+						</view>
+						<div class="bill_text">积分明细</div>
+					</div>
+					<div class="point_store">
+						<view @click="change02()" class="store_image">
+							<image style="width: 40px; height: 40px;" mode="aspectFit" src="./../static/store.png"></image>
+						</view>
+						<div class="store_text">积分商城</div>
+					</div>
+					<div class="point_ranking">
+						<view @click="change03()" class="ranking_image">
+							<image style="width: 40px; height: 40px;" mode="aspectFit" src="./../static/ranking.png"></image>
+						</view>
+						<div class="ranking_text">积分排名</div>
+					</div>
+				</div>
+				<div class="blank_container2"></div>
+			</div>
+			<div class="my_ranking_background">
+				<div class="ranking_progress_text">排名进步</div>
+			</div>
+			<div class="progress_chart">
+				<view>
+					<progress_chart></progress_chart>
+				</view>
+			</div>
+			<div class="exit">
+				<nut-button block type="primary" @click="change04()">退出登录</nut-button>
+			</div>
+		</template>
+	</login-check>
 </template>
 
 <script>
@@ -64,7 +65,7 @@
   export default{
     data() {
     	return {
-    	name: "lisi",
+    	username: "lisi",
         avatar: "https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png",
 		address: "翻斗花园牛爷爷家",
 		point: "520"
@@ -86,26 +87,23 @@
 		uni.removeStorageSync('token');
 		uni.removeStorageSync('isBind');
 		uni.removeStorageSync('detail');
-		NavigateUtil.navigateTo('/pages/my_information/my_information');
+		uni.removeStorageSync('type');
+		uni.$emit("updateState", {});
+		NavigateUtil.switchTab('/pages/main/main');
 	  }
 	},
 	
-	onLoad(options){
-	  let user_detail = user.getDetail();
-	  console.log(user_detail)
-	  this.name = user_detail.name;
-	  switch(user_detail.type){
-	    case 0: this.type = "志愿者"; break;
-	    case 1: this.type = "家长"; break;
-	    case 2: this.type = "儿童"; break;
-	  }
-	  this.address = user_detail.address;
-	  this.point = user_detail.point;
-	  this.avatar = user_detail.avatar;
+	onLoad(){
+		let user_detail = user.getDetail();
+		console.log(user_detail)
+		this.username = user_detail.username;
+		this.address = user_detail.address;
+		this.avatar = user_detail.avatar;
+		this.point = user_detail.point;
 	},
-	}
+	
+  }
   
-  user.getState()
 </script>
 
 <style>
@@ -146,6 +144,7 @@
 	.my_info .text-large {
 	  font-size: 30px; /* 字体大小 */
 	  letter-spacing: 0; /* 字距 */
+	  font-weight: bold;
 	}
 	
 	/* my_info 内部的小文本框样式 */
