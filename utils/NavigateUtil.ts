@@ -11,6 +11,20 @@ export default class NavigateUtil {
 		});
 	}
 	
+	static switchTab(path: String) {
+		{   
+			uni.switchTab({
+				url: path,
+				success:()=> {
+						console.log(1);
+						},
+				fail: (res) => {
+				console.log('navigate failed',res);
+				}
+			})
+		}
+	}
+	
 	static getNavigateData(option) {
 		if(option.data == null) {
 			return null;
