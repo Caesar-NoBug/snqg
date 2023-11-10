@@ -13,14 +13,14 @@
 		</view>	
 		<view style="display: flex;justify-content: space-between;">
 			<nut-icon name="order" size="26"></nut-icon>
-			<nut-icon @click="GotoStudy()" name="arrow-right" size="26"></nut-icon>
+			<nut-icon @click="GotoLookchart()" name="arrow-right" size="26"></nut-icon>
 			
 		</view>
 		<view style="display: flex;justify-content: space-between; padding-bottom: 3%;">
 			<view  >今日任务{{todayrask}}/5
 			<nut-icon custom-color="#E0FFFF" v-if="todayrask>=5" name="checklist"  ></nut-icon>
 			</view>
-			<view @click="GotoStudy()">去完成任务</view>
+			<view @click="GotoLookchart()">近期图表概览</view>
 		
 		</view>
 	</view>
@@ -43,12 +43,9 @@ import axios from '../../utils/http.js';
 			}
 		},
 		methods: {
-			// GotoStudy() {
-			// 	NavigateUtil.navigateTo('/pages/LookRank/LookRank');
-			// },
-			//需要更新---------------
-			GotoStudy(){
-				console.log('需要学习任务链接')
+	//更新为跳转至图表查看
+			GotoLookchart(){
+				NavigateUtil.navigateTo('/pages/chart_fromLookRank/chart_fromLookRank');
 			},
 			//需要更新-----------
 			Gettotalrask(){
