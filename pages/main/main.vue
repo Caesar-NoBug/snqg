@@ -1,5 +1,6 @@
 <template>
 	<top-bar-container title="主页">
+		</top-bar-container>
 		<template #content>
 			<nut-button @click="func1()">个人信息</nut-button>
       <nut-button @click="func2()">通话历史</nut-button>
@@ -17,23 +18,26 @@
 		  <p>&nbsp;|&nbsp;|&nbsp;|&nbsp;&nbsp;继续加油哦！</p>
 	  </div >
 	  <div class="img-box">
-		  <nut-avatar size="large">
-		     <img class="image" src="../../test-wh/Snipaste_2023-11-02_19-41-05.png" alt="图片"  @click="handleImageClick(0)">
+		  <nut-avatar size="small" >
+		     <img src="https://tva1.sinaimg.cn/large/0063SUT2ly1hjpz1llinhj309o09rabi.jpg" style="width: 30px; height: 30px; margin-right: 0px;"/>
+		  			  </nut-avatar>
+		  <nut-avatar size="70">
+		     <img class="image" src="https://tva1.sinaimg.cn/large/0063SUT2ly1hjpz1llinhj309o09rabi.jpg" alt="图片"  @click="handleImageClick(0)">
 			  </nut-avatar>
-			 <nut-avatar size="large">
-		     <img class="image" src="../../test-wh/Snipaste_2023-11-02_21-06-19.png" alt="图片"  @click="handleImageClick(1)">
+			 <nut-avatar size="70">
+		     <img class="image" src="https://tva1.sinaimg.cn/large/0063SUT2ly1hjpz1llinhj309o09rabi.jpg" alt="图片"  @click="handleImageClick(1)">
 			 </nut-avatar>
-<nut-avatar size="large">
-		     <img class="image" src="../../test-wh/Snipaste_2023-11-02_19-41-05.png" alt="图片"  @click="handleImageClick(0)">
+<nut-avatar size="70">
+		     <img class="image" src="https://tva1.sinaimg.cn/large/0063SUT2ly1hjpz1llinhj309o09rabi.jpg" alt="图片"  @click="handleImageClick(0)">
 			  </nut-avatar>
-			 <nut-avatar size="large">
-		     <img class="image" src="../../test-wh/Snipaste_2023-11-02_21-06-19.png" alt="图片"  @click="handleImageClick(1)">
+			 <nut-avatar size="70">
+		     <img class="image" src="https://tva1.sinaimg.cn/large/0063SUT2ly1hjpz1llinhj309o09rabi.jpg" alt="图片"  @click="handleImageClick(1)">
 			 </nut-avatar>
-<nut-avatar size="large">
-		     <img class="image" src="../../test-wh/Snipaste_2023-11-02_19-41-05.png" alt="图片"  @click="handleImageClick(0)">
+<nut-avatar size="70">
+		     <img class="image" src="https://tva1.sinaimg.cn/large/0063SUT2ly1hjpz1llinhj309o09rabi.jpg" alt="图片"  @click="handleImageClick(0)">
 			  </nut-avatar>
-			 <nut-avatar size="large">
-		     <img class="image" src="../../test-wh/Snipaste_2023-11-02_21-06-19.png" alt="图片"  @click="handleImageClick(1)">
+			 <nut-avatar size="70">
+		     <img class="image" src="https://tva1.sinaimg.cn/large/0063SUT2ly1hjpz1llinhj309o09rabi.jpg" alt="图片"  @click="handleImageClick(1)">
 			 </nut-avatar>
 			 
 			 
@@ -49,14 +53,14 @@
 		  <nut-cellgroup>
 		    <nut-cell @click="func9()" title="我的成就和荣誉" center sub-title="继续坚持完成学习任务获得更多荣誉勋章" desc="进入" is-link="true">
 		      <template v-slot:icon>
-		          <img src="../../test-wh/Snipaste_2023-11-03_11-45-08.png" style="width: 50px; height: 50px; margin-right: 10px;"/>
+		          <img src="https://tva1.sinaimg.cn/large/0063SUT2ly1hjpzlzrndhj303u0433yl.jpg" style="width: 50px; height: 50px; margin-right: 10px;"/>
 		      </template>
 		    </nut-cell>
 		  </nut-cellgroup>
 		</div>
 		</template>
 		
-	</top-bar-container>
+	
 	
 </template>
 
@@ -73,18 +77,6 @@
 		    };
 		  },
 		onLoad() {
-		
-		  // uni.$on("refresh", function(data) {
-		  //   console.log(12)
-		  //   const pages = getCurrentPages()
-		  //           // 声明一个pages使用getCurrentPages方法
-		  //           const curPage = pages[pages.length - 1]
-		  //           // 声明一个当前页面
-		  //           curPage.onLoad(curPage.options) // 传入参数
-		  //           curPage.onShow()
-		  //           curPage.onReady()
-		   
-		  // });
 		},
 		methods: {
 			func1: function() {
@@ -134,7 +126,7 @@
 <style>
 .stereo-box {
   width: 92%;
-  height: 150px;
+  height: 130px;
   background-color: #ffffff;
   color: #000000;
   text-align: center;
@@ -144,13 +136,13 @@
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
   margin-top: 5px; /* 子元素上边距为10像素 */
-    margin-bottom: 30px; /* 子元素下边距为10像素 */
+    margin-bottom: 15px; /* 子元素下边距为10像素 */
 }
 .big-box {
 	
 	width: 98vw;
-	 margin-top: 20px; /* 外部上边距为20像素 */
-	  margin-bottom: 20px; /* 下外部边距为20像素 */
+	 margin-top: 20px; 
+	  margin-bottom: 20px; 
 	display: flex;
   flex-direction: column;
   justify-content: center;
@@ -161,31 +153,36 @@
   color: #ffffff;
   border: 1px solid #000000;
   border-radius: 10px;
-  /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); */
+ 
 }
-.img-box {
-  /* height:100px; */
-   /* justify-content: space-around; */
+/* .img-box {
+ 
   width: 92%; 
-  overflow-x: auto; /* 水平溢出时显示滚动条 */
-    white-space: nowrap; /* 防止图片换行显示 */
+  overflow-x: auto; 
+    white-space: nowrap; 
   height: auto;
   display: flex;
   flex: 0 0 100px;
- margin-top: 10px; /* 子元素上边距为10像素 */
-   margin-bottom: 5px; /* 子元素下边距为10像素 */
+ margin-top: 5px; 
+   margin-bottom: 0px;
    
   
-}
-.image {
-	flex: 0 0 auto;
-  width: 80px; /* 设置图片的宽度
-  height: auto; /* 高度自适应，保持宽高比例 */
-  border-radius: 50% */
-}
+} */
+/* .image {
+
+ border-radius: 50% ;
+  position: relative;
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+display: flex;
+  flex-direction: column;
+  justify-content: center; 
+ 
+} */
 .text {
 overflow-wrap: break-word;
- margin-left: 20px; /* 设置左边距为10像素 */
+ margin-left: 20px; /* 设置左边距为10像素
   margin-right: 20px; /* 设置右边距为10像素 */
  text-align: left; /* 文本向左对齐 */
   font-size: 16px; /* 调整字号 */

@@ -82,7 +82,7 @@
 				"navigationBarTitleText": "",
 		        "enablePullDownRefresh" : false
 		    }
-		},
+		}
 		
     ],
     "tabBar" : {

@@ -21,6 +21,7 @@
 			<nut-dialog :title="title" :close-on-click-overlay="false" :content="appointment" v-model:visible="visible"></nut-dialog>
 			</div>
 		</div>
+		<div class="scroll-view-container">
 		<scroll-view class="chat" scroll-y="true" scroll-with-animation="true" :scroll-into-view="scrollToView">
 		  <view class="chat-ls" v-for="msg in msgs">
 		    <div class="chat-time" v-if="msg.time != ''">{{changeTime(msg.time)}}</div>
@@ -36,6 +37,7 @@
 		    </div>
 		  </view>
 		</scroll-view>
+		</div>
 		<template >
 		<div class="input">
 		  <nut-input v-model="message.buttonVal" placeholder="请输入您想说的话"  center>
@@ -54,6 +56,7 @@
 	import NavigateUtil from '../../utils/NavigateUtil';
 	import TimeUtil from '../../utils/TimeUtil';
 	import user from '../../store/user.js';
+	  import axios from '../../utils/http.js';
 	import { ref } from 'vue';
 	import { reactive } from 'vue';
 	var updatedTime = 0;
@@ -84,42 +87,53 @@
 			state: "在线",	//数字，0为下线，1为上线
 			child_name: "卞文静",
 			volunteer_name: "张三",
+			volunteer_id: "666",
 			appointment: "04/20 6:20",
 			myAvatar: "https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png",
 			hisAvatar: "https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png",
-			msgs: [{
-			  fromMe: true,//true为发送的信息， false为接收的信息
-			  time: 1665814186,
-			  type: 0,//信息类型： 0，文字
-			  content: "42"
-			}, {
-			  fromMe: true,
-			  time: 1666914186,
-			  type: 0,
-			  content: "是一个神奇的数字" 
-			}, {
-			  fromMe: false,
-			  time: new Date().getTime() / 1000 - 130,
-			  type: 0,
-			  content: "为什么"
-			}, {
-			  fromMe: false,
-			  time: new Date().getTime() / 1000,
-			  type: 0,
-			  content: "你是小傻子"
-			}]
+			msgs: []
 			}
 		
 		},
 		onLoad(param) {
 			const option = NavigateUtil.getNavigateData(param);
-			this.volunteer_name = option.data;
+			this.volunteer_name = option.volunteer_name;
+			this.volunteer_id = option.volunteer_id;
+			let msgs = option.contents;
+			console.log(msgs);
+			for(let i = 0;i<msgs.length;i++)
+			{
+				const originalDate = new Date(msgs[i].sendTime).getTime();
+		
+				const chinaLocalTime = originalDate;
+				
+				if(this.volunteer_id==msgs[i].senderId)
+				{
+					this.msgs.push(
+					{
+						fromMe: false,
+						time: chinaLocalTime, // 使用当前时间戳作为消息时间
+						type: 0,
+						content: msgs[i].content,
+					}
+					)
+				}
+				else{
+					this.msgs.push(
+					{
+						fromMe: true,
+						time: chinaLocalTime, // 使用当前时间戳作为消息时间
+						type: 0,
+						content: msgs[i].content,
+					}
+					)
+				}
+			}
+			
 		},
     methods: {
 
 		sendMessage(text,time) {
-			
-			
 			this.msgs.push({
 			  fromMe: true,
 			  time: time, // 使用当前时间戳作为消息时间
@@ -129,20 +143,36 @@
 			
 			this.message.buttonVal=""
 			
+			axios({
+					  method: 'POST',
+					  headers: {
+					    'Content-Type': 'application/json',
+						'token' : user.getToken(),
+					  },
+					  url: "/chat/send",
+					  params: {
+					    "content": text,
+					    "receiverId": this.volunteer_id,
+					  }
+					}).then(res =>{
+						console.log(res);
+					  if(res.code === 400)
+					{
+						
+					}
+					if (res.code === 200){
+						
+					    
+			} 
+					})
+			
+			uni.$emit("update", {});
+			
 		},
 		formatTime() {
-		  const now = new Date();
-		  let hours = now.getHours();
-		  let minutes = now.getMinutes();
-		
-		 
-		
-		  // 如果分钟小于10，前面加上0
-		  minutes = minutes < 10 ? '0' + minutes : minutes;
-		
-		
-		  const formattedTime =  hours + ':' + minutes 
-		  return formattedTime;
+		  const now = new Date().getTime();
+		  
+		  return now;
 		},
       change02: function(){
         console.log(123)
@@ -151,12 +181,28 @@
         };
         NavigateUtil.navigateTo("/pages/chat_call/chat_call", param);
       },
-			changeTime: function(time){
-			  const updateInterval = 120;//超过两分钟则视为一段新的对话，显示新的对话开始时间
-			  let res = '';
-			  if(time - updatedTime > updateInterval) res = TimeUtil.getExactTimeString(time);
-			  updatedTime = time;
-			  return res;
+		changeTime: function(time){
+			  const originalDate = new Date(time);
+			    
+			    // 获取原始时间的年、月、日、时、分、秒（均按照UTC时间获取）
+			    const year = originalDate.getUTCFullYear();
+			    const month = originalDate.getUTCMonth() + 1; // 月份从0开始，需要加1
+			    const day = originalDate.getUTCDate();
+			    const hours = originalDate.getUTCHours();
+			    const minutes = originalDate.getUTCMinutes();
+			    const seconds = originalDate.getUTCSeconds();
+			    
+			    // 转换为中国时区的时间
+			    const chinaTimezoneOffset = 8 * 60; // 中国时区偏移为8小时，换算为分钟
+			    const chinaHours = (hours + chinaTimezoneOffset / 60) % 24;
+			    const isSameDay = new Date().getUTCDate() === day; // 判断转换后的中国时间与当前时间是否为同一天
+			    
+			    // 格式化中国时区的时间
+			    const formattedChinaTime = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${chinaHours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+			    
+			    // 如果转换后的中国时间与当前时间的日期相同，则不显示日期
+			    const finalFormattedChinaTime = isSameDay ? formattedChinaTime.split(' ')[1] : formattedChinaTime;
+			  return finalFormattedChinaTime;
 		  }
 	}
 }
@@ -244,6 +290,14 @@
 	.middle-div{
 		display: flex; /* 使用 Flex 布局 */
 		justify-content: center; /* 水平居中 */
+	}
+	.scroll-view-container {
+	  position: absolute;
+	  top: 175px; /* 设置 scroll-view 区域顶部与其他组件的间隔 */
+	  bottom: 80px;
+	  left: 0;
+	  right: 0;
+	  overflow-y: auto; /* 允许垂直滚动 */
 	}
 	.msg-text-right{
     text-align: center;
