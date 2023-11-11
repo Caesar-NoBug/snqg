@@ -1,16 +1,18 @@
 <template>
 	<top-bar-container :returnAble="true" title="查看排名">
 	</top-bar-container>
+	<div class="shehuiliu666">
 	<view>
 		<totalpoint></totalpoint>
 		<achivemententrance></achivemententrance>
 		<RankShow></RankShow>
 		<todaydata></todaydata>
 		<encourage></encourage>
-		
+
+	
 		
 	</view>
-	
+	</div>
 </template>
 
 <script>
@@ -41,5 +43,10 @@
 </script>
 
 <style>
-
+.shehuiliu666{
+	position: absolute;
+	top: 96px;
+	bottom: 0;
+	overflow-y:auto;
+}
 </style>

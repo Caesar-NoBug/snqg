@@ -13,14 +13,14 @@
 		</view>	
 		<view style="display: flex;justify-content: space-between;">
 			<nut-icon name="order" size="26"></nut-icon>
-			<nut-icon @click="GotoStudy()" name="arrow-right" size="26"></nut-icon>
+			<nut-icon @click="GotoLookchart()" name="arrow-right" size="26"></nut-icon>
 			
 		</view>
 		<view style="display: flex;justify-content: space-between; padding-bottom: 3%;">
 			<view  >今日任务{{todayrask}}/5
 			<nut-icon custom-color="#E0FFFF" v-if="todayrask>=5" name="checklist"  ></nut-icon>
 			</view>
-			<view @click="GotoStudy()">去完成任务</view>
+			<view @click="GotoLookchart()">近期图表概览</view>
 		
 		</view>
 	</view>
@@ -43,44 +43,22 @@ import axios from '../../utils/http.js';
 			}
 		},
 		methods: {
-			GotoStudy(){
-				console.log('需要学习任务链接')
+	//更新为跳转至图表查看
+			GotoLookchart(){
+				NavigateUtil.navigateTo('/pages/chart_fromLookRank/chart_fromLookRank');
 			},
-			//获取总任务数，暂无接口
-			// Gettotalrask(){
-			// 	return axios({
-			// 	  method: 'GET',
-			// 	  params: {
-			// 	    calculationType: 'accumulated'
-			// 	  },
-			// 	  headers: {
-			// 	    'Content-Type': 'application/json',
-			// 	    'token': user.getToken() 
-			// 	  },
-			// 	  url: 'task/getTask'
-			// 	}).then(res => {
-			// 	  console.log(res);
-			// 	  if (res.code === 400) {
-			// 	    console.log(400);
-			// 	  }
-			// 	  if (res.code === 200) {
-			// 	    console.log(200);
-			// 	    this.totalrask=res.data.totalPoints; // 将获取的排名值赋给对应的变量
-			// 	    console.log("已获取到totalrask")
-			// 					}
-			// 	});
-			// },
-			Gettodaypoint(){
+			//需要更新-----------
+			Gettotalrask(){
 				return axios({
 				  method: 'GET',
 				  params: {
-				    timeRange: 'day'
+				    // calculationType: 'accumulated'
 				  },
 				  headers: {
 				    'Content-Type': 'application/json',
 				    'token': user.getToken() 
 				  },
-				  url: 'point/drawPointCount'
+				  url: 'point/getTotalTaskCount'
 				}).then(res => {
 				  console.log(res);
 				  if (res.code === 400) {
@@ -88,7 +66,31 @@ import axios from '../../utils/http.js';
 				  }
 				  if (res.code === 200) {
 				    console.log(200);
-				    this.todaypoint=res.data.pointStatusVOList[0].childPoint; // 将获取的排名值赋给对应的变量
+				    this.totalrask=res.data.totalTaskCount; // 将获取的排名值赋给对应的变量
+				    console.log("已获取到totalrask")
+								}
+				});
+			},
+			//更新到这---------------------
+			Gettodaypoint(){
+				return axios({
+				  method: 'GET',
+				  params: {
+				    
+				  },
+				  headers: {
+				    'Content-Type': 'application/json',
+				    'token': user.getToken() 
+				  },
+				  url: 'point/getTodayPointCount'
+				}).then(res => {
+				  console.log(res);
+				  if (res.code === 400) {
+				    console.log(400);
+				  }
+				  if (res.code === 200) {
+				    console.log(200);
+				    this.todaypoint=res.data.todayPointCount; // 将获取的排名值赋给对应的变量
 				    console.log("获取到todaypoint")
 								}
 				});
@@ -97,13 +99,13 @@ import axios from '../../utils/http.js';
 				return axios({
 				  method: 'GET',
 				  params: {
-				    timeRange: 'day'
+				    
 				  },
 				  headers: {
 				    'Content-Type': 'application/json',
 				    'token': user.getToken() 
 				  },
-				  url: 'point/drawTaskCount'
+				  url: 'point/getTodayTaskCount'
 				}).then(res => {
 				  console.log(res);
 				  if (res.code === 400) {
@@ -111,7 +113,7 @@ import axios from '../../utils/http.js';
 				  }
 				  if (res.code === 200) {
 				    console.log(200);
-				    this.todayrask=res.data.taskStatusVOList[0].userTaskCount; // 将获取的排名值赋给对应的变量
+				    this.todayrask=res.data.todayTaskCount; 
 				    console.log("获取到todayrask")
 								}
 				});
@@ -121,7 +123,7 @@ import axios from '../../utils/http.js';
 		mounted() {
 			this.Gettodayrask();
 			this.Gettodaypoint();
-			// this.Gettotalrask()
+			this.Gettotalrask()
 		}	
 	}
 </script>
