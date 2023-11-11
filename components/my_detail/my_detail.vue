@@ -44,8 +44,8 @@
     		name: "lisi",
         type: "志愿者",
         avatar: "https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png",
-        call_count: 0,
-        call_time: "0秒",
+        call_count: 1,
+        call_time: "1秒",
     	}
     },
     methods: {
