@@ -1,0 +1,39 @@
+
+.container.data-v-4a9d7950 {
+	display: grid;
+	grid-gap: 1rpx;
+	height: 400rpx;
+	padding: 40rpx;
+}
+.title.data-v-4a9d7950 {
+	padding-bottom: 20rpx;
+}
+.details.data-v-4a9d7950 {
+	padding-bottom: 20rpx;
+}
+.btn.data-v-4a9d7950 {
+	text-align: center;
+}
+.pop.data-v-4a9d7950 {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 9998;
+}
+.popup_content.data-v-4a9d7950 {
+	position: fixed;
+	width: 550rpx;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+	font-size: 30rpx;
+	padding: 40rpx;
+	border-radius: 20rpx;
+	background-color: #fff;
+	z-index: 9999;
+}
+

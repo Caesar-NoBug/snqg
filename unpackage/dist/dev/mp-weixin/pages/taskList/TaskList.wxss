@@ -1,0 +1,25 @@
+
+.container.data-v-76368606 {
+	display: grid;
+	grid-gap: 1rpx;
+	height: 400rpx;
+	padding: 40rpx;
+}
+.taskList.data-v-76368606 {
+	border: 1rpx solid black;
+	border-radius: 20rpx;
+	padding: 10rpx;
+	height: 60rpx;
+	font-size: 45rpx;
+}
+.taskDesc.data-v-76368606 {
+	display: inline-block;
+}
+.taskState.data-v-76368606 {
+	display: inline-block;
+	float: right;
+}
+.btn.data-v-76368606{
+	text-align: center;
+}
+

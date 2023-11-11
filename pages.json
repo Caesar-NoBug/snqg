@@ -1,0 +1,54 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/desireList/DesireList",
+			"style": {
+				"navigationBarTitleText": "愿望列表"
+			}
+		},
+		{
+			"path": "pages/desirePost/DesireDesc",
+			"style": {
+				"navigationBarTitleText": "发布愿望"
+				
+			}
+		},
+		{
+			"path": "pages/taskDetails/TaskDesc",
+			"style": {
+				"navigationBarTitleText": "任务详情"
+			}
+		},
+		{
+			"path": "pages/taskHelp/ProblemCondition",
+			"style": {
+				"navigationBarTitleText": "任务求助"
+			}
+		},
+		{
+			"path": "pages/taskFinish/TaskFinishCondition",
+			"style": {
+				"navigationBarTitleText": "任务完成"
+			}
+		},
+		{
+			"path": "pages/desireDetails/DesireDetails",
+			"style": {
+				"navigationBarTitleText": "愿望详情"
+			}
+		},
+		{
+			"path": "pages/taskList/TaskList",
+			"style": {
+				"navigationBarTitleText": "任务列表"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}

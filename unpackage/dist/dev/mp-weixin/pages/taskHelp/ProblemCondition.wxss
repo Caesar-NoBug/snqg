@@ -1,0 +1,19 @@
+
+.container.data-v-1e250d88{
+	padding: 40rpx;
+}
+.pickers.data-v-1e250d88 {
+	margin-top: 10rpx;
+	border: 1rpx solid black;
+}
+.icons.data-v-1e250d88 {
+	display: inline-block;
+	float: right;
+	padding-top: 18rpx;
+	padding-right: 10rpx;
+}
+.shuru.data-v-1e250d88 {
+	padding: 20rpx;
+}
+
+

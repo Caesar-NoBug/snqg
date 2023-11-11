@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/desireList/DesireList",
+    "pages/desirePost/DesireDesc",
+    "pages/taskDetails/TaskDesc",
+    "pages/taskHelp/ProblemCondition",
+    "pages/taskFinish/TaskFinishCondition",
+    "pages/desireDetails/DesireDetails",
+    "pages/taskList/TaskList"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

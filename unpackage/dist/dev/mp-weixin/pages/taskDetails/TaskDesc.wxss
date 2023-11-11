@@ -1,0 +1,40 @@
+
+.container.data-v-412ffaa1 {
+	display: grid;
+	grid-gap: 1rpx;
+	background-color: #f8f8f8;
+	height: 400rpx;
+	padding: 40rpx;
+}
+.introduction.data-v-412ffaa1 {
+	font-weight: bold;
+}
+.help.data-v-412ffaa1 {
+	color: blue;
+	font-size: 35rpx;
+	font-weight: bold;
+	text-align: right;
+	display: inline-block;
+}
+.taskHelp.data-v-412ffaa1 {
+	text-align: right;
+}
+.help.data-v-412ffaa1 {
+	display: inline-block;
+	margin-top: 50rpx;
+	padding-right: 20rpx;
+}
+.btnPosition .picLoad.data-v-412ffaa1{
+	text-align: center;
+}
+.tijiao.data-v-412ffaa1 {
+	float: right;
+}
+.choose.data-v-412ffaa1{
+	float: left;
+}
+.introduction.data-v-412ffaa1 {
+	padding-left: 35rpx;
+	padding-top: 25rpx;
+}
+

@@ -1,0 +1,17 @@
+
+.container.data-v-ae1dc2d2 {
+	display: grid;
+	grid-gap: 30rpx;
+	padding: 40rpx;
+}
+.image.data-v-ae1dc2d2 {
+	text-align: center;
+}
+.test.data-v-ae1dc2d2 {
+	padding: 10rpx;
+	border: 1rpx solid #f8f8f8;
+}
+label.data-v-ae1dc2d2 {
+	font-weight: bold;
+}
+

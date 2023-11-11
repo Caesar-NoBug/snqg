@@ -1,0 +1,1 @@
+<view class="container data-v-a76eb7f6"><text class="goalFinish data-v-a76eb7f6">恭喜你！已达成目标</text><view class="_br data-v-a76eb7f6"></view><text class="goalDesc data-v-a76eb7f6">{{taskDesc}}</text><view class="_br data-v-a76eb7f6"></view><text class="goalConfiguration data-v-a76eb7f6">继续努力完成其他任务吧!</text></view>
