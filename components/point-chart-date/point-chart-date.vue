@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import axios from '../../utils/http.js'
-import user from '../../store/user.js'
+import axios from '../../utils/http.js';
+import user from '../../store/user.js';
 	
 export default {
   data() {
@@ -49,28 +49,28 @@ export default {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				//'token': user.getToken(),
-				'token': "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0Yzg4MmE5ZWRlYTk0NjJmYjA5NDJiYjdmMThmMmNiNyIsInN1YiI6Im8ySEVONVp6LUJjc0s3NFFkbFJhT1J5cmVuUjgiLCJpc3MiOiJzZyIsImlhdCI6MTY5OTU4Mzg0OSwiZXhwIjoxNzAyMTc1ODQ5fQ.nBtWk3U4wHKEjYZ0AH_6aMOjCAXhMDIq0XpZHJpA8tg",
+				'token': user.getToken()
+				
 			},
 			url: "point/drawPointCount",
 			params: {
 				//'token': user.getToken(),
-				'timeRange': 'day',
+				'timeRange': 'day'
 			}
 		}).then(res => {				
 		    if (res.code === 200) {
 			
 			let response = {
 			    //categories: this.recordTimeArray,
-				categories: [res.data.pointStatusVOList[0].recordTime,res.data.pointStatusVOList[1].recordTime],//,res.data.pointStatusVOList[2].recordTime],
+				categories: [res.data.pointStatusVOList[0].recordTime,res.data.pointStatusVOList[1].recordTime,res.data.pointStatusVOList[2].recordTime],
 			    series: [
 			      {
 			        name: "我的数据",
-			        data: [res.data.pointStatusVOList[0].childPoint,res.data.pointStatusVOList[1].childPoint]//,res.data.pointStatusVOList[2].childPoint]
+			        data: [res.data.pointStatusVOList[0].childPoint,res.data.pointStatusVOList[1].childPoint,res.data.pointStatusVOList[2].childPoint]
 			      },
 				  {
 					  name: "平均数据",
-					  data: [parseInt(res.data.pointStatusVOList[0].systemAverage),parseInt(res.data.pointStatusVOList[1].systemAverage)]//,parseInt(res.data.pointStatusVOList[2].systemAverage)]
+					  data: [parseInt(res.data.pointStatusVOList[0].systemAverage),parseInt(res.data.pointStatusVOList[1].systemAverage),parseInt(res.data.pointStatusVOList[2].systemAverage)]
 				  }
 			    ]
 			};

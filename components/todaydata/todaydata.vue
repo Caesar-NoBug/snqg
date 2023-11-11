@@ -58,7 +58,7 @@ import axios from '../../utils/http.js';
 				    'Content-Type': 'application/json',
 				    'token': user.getToken() 
 				  },
-				  url: 'task/getAllFinishedTask'
+				  url: 'point/getTotalTaskCount'
 				}).then(res => {
 				  console.log(res);
 				  if (res.code === 400) {
@@ -66,7 +66,7 @@ import axios from '../../utils/http.js';
 				  }
 				  if (res.code === 200) {
 				    console.log(200);
-				    this.totalrask=res.data.taskFinishedVos.length; // 将获取的排名值赋给对应的变量
+				    this.totalrask=res.data.totalTaskCount; // 将获取的排名值赋给对应的变量
 				    console.log("已获取到totalrask")
 								}
 				});
@@ -76,13 +76,13 @@ import axios from '../../utils/http.js';
 				return axios({
 				  method: 'GET',
 				  params: {
-				    timeRange: 'day'
+				    
 				  },
 				  headers: {
 				    'Content-Type': 'application/json',
 				    'token': user.getToken() 
 				  },
-				  url: 'point/drawPointCount'
+				  url: 'point/getTodayPointCount'
 				}).then(res => {
 				  console.log(res);
 				  if (res.code === 400) {
@@ -90,7 +90,7 @@ import axios from '../../utils/http.js';
 				  }
 				  if (res.code === 200) {
 				    console.log(200);
-				    this.todaypoint=res.data.pointStatusVOList[0].childPoint; // 将获取的排名值赋给对应的变量
+				    this.todaypoint=res.data.todayPointCount; // 将获取的排名值赋给对应的变量
 				    console.log("获取到todaypoint")
 								}
 				});
@@ -99,13 +99,13 @@ import axios from '../../utils/http.js';
 				return axios({
 				  method: 'GET',
 				  params: {
-				    timeRange: 'day'
+				    
 				  },
 				  headers: {
 				    'Content-Type': 'application/json',
 				    'token': user.getToken() 
 				  },
-				  url: 'point/drawTaskCount'
+				  url: 'point/getTodayTaskCount'
 				}).then(res => {
 				  console.log(res);
 				  if (res.code === 400) {
@@ -113,7 +113,7 @@ import axios from '../../utils/http.js';
 				  }
 				  if (res.code === 200) {
 				    console.log(200);
-				    this.todayrask=res.data.taskStatusVOList[0].userTaskCount; // 将获取的排名值赋给对应的变量
+				    this.todayrask=res.data.todayTaskCount; 
 				    console.log("获取到todayrask")
 								}
 				});

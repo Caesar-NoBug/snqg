@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import axios from '../../utils/http.js'
-import user from '../../store/user.js'
+import axios from '../../utils/http.js';
+import user from '../../store/user.js';
 
 export default {
 	
@@ -62,8 +62,8 @@ export default {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				//'token': user.getToken(),
-				'token': "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0Yzg4MmE5ZWRlYTk0NjJmYjA5NDJiYjdmMThmMmNiNyIsInN1YiI6Im8ySEVONVp6LUJjc0s3NFFkbFJhT1J5cmVuUjgiLCJpc3MiOiJzZyIsImlhdCI6MTY5OTU4Mzg0OSwiZXhwIjoxNzAyMTc1ODQ5fQ.nBtWk3U4wHKEjYZ0AH_6aMOjCAXhMDIq0XpZHJpA8tg",
+				'token': user.getToken()
+				
 			},
 			url: "point/drawTaskCount",
 			params: {

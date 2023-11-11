@@ -9,8 +9,8 @@
 </template>
 
 <script>
-	import axios from '../../utils/http.js'
-	import user from '../../store/user.js'
+	import axios from '../../utils/http.js';
+	import user from '../../store/user.js';
 	
 	export default {
 		data() {
@@ -57,8 +57,8 @@
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json',
-						//'token': user.getToken(),
-						'token': "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI0Yzg4MmE5ZWRlYTk0NjJmYjA5NDJiYjdmMThmMmNiNyIsInN1YiI6Im8ySEVONVp6LUJjc0s3NFFkbFJhT1J5cmVuUjgiLCJpc3MiOiJzZyIsImlhdCI6MTY5OTU4Mzg0OSwiZXhwIjoxNzAyMTc1ODQ5fQ.nBtWk3U4wHKEjYZ0AH_6aMOjCAXhMDIq0XpZHJpA8tg",
+						'token': user.getToken()
+						
 					},
 					url: "point/drawTaskCount",
 					params: {
@@ -70,15 +70,15 @@
 					
 					let response = {
 					    //categories: this.recordTimeArray,
-						categories: [res.data.taskStatusVOList[0].recordTime,res.data.taskStatusVOList[1].recordTime],//,res.data.taskStatusVOList[2].recordTime],
+						categories: [res.data.taskStatusVOList[0].recordTime,res.data.taskStatusVOList[1].recordTime,res.data.taskStatusVOList[2].recordTime],
 					    series: [
 					      {
 					        name: "我的数据",
-					        data: [res.data.taskStatusVOList[0].userTaskCount,res.data.taskStatusVOList[1].userTaskCount]//,res.data.taskStatusVOList[2].userTaskCount]
+					        data: [res.data.taskStatusVOList[0].userTaskCount,res.data.taskStatusVOList[1].userTaskCount,res.data.taskStatusVOList[2].userTaskCount]
 					      },
 						  {
 							  name: "平均数据",
-							  data: [parseInt(res.data.taskStatusVOList[0].systemAverageTaskCount),parseInt(res.data.taskStatusVOList[1].systemAverageTaskCount)]//,parseInt(res.data.taskStatusVOList[2].systemAverageTaskCount)]
+							  data: [parseInt(res.data.taskStatusVOList[0].systemAverageTaskCount),parseInt(res.data.taskStatusVOList[1].systemAverageTaskCount),parseInt(res.data.taskStatusVOList[2].systemAverageTaskCount)]
 						  }
 					    ]
 					};
