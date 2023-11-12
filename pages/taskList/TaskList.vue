@@ -2,14 +2,11 @@
 	<top-bar-container :returnAble="true" title="任务列表">
 		<template #content>
 
-			<view class="taskList" v-for="item in taskList" @click="taskDetails" :data-index='item'>
-				<view class="taskDesc">
-					<text class="taskTitle">{{item.title}}</text>
-				</view>
-				<view class="taskState">
-					<text class="taskProgress"
-						:class="{hasFinish:item.progression==100}">{{item.progression==100?"已完成":"等待完成"}}</text>
-				</view>
+			<view class="" v-for="item in taskList" @click="taskDetails" :data-index='item'>
+				<nut-cell :title="item.title" :desc="item.progression==100?'已完成':'等待完成'" round-radius="20px"
+					size="large">
+				</nut-cell>
+
 			</view>
 		</template>
 	</top-bar-container>
@@ -41,28 +38,28 @@
 				}]
 			}
 		},
-			onload() {
-				//页面刷新获取数据
-				axios({
-					method: 'GET',
-					params: {
-						"childId": this.childId,
-						'token': user.getToken()
-					},
-					headers: {
-					  'Content-Type': 'application/json',
-					  'token': user.getToken() 
-					},
-					url: '/task/getTask'
-				}).then(res => {
-		       console.log(res);
-		       if (res.code === 400) return;
-		       else {
-		         this.taskList=res.data.taskFinishiVos;
-		       }
-		     });
+		onload() {
+			//页面刷新获取数据
+			axios({
+				method: 'GET',
+				params: {
+					"childId": this.childId,
+					'token': user.getToken()
+				},
+				headers: {
+					'Content-Type': 'application/json',
+					'token': user.getToken()
+				},
+				url: '/task/getTask'
+			}).then(res => {
+				console.log(res);
+				if (res.code === 400) return;
+				else {
+					this.taskList = res.data.taskFinishiVos;
+				}
+			});
 
-			},
+		},
 		methods: {
 			//跳转到对应的任务详情
 			taskDetails(event) {
@@ -104,6 +101,10 @@
 
 	.btn {
 		text-align: center;
+	}
+
+	.taskProgress {
+		color: red;
 	}
 
 	.hasFinish {

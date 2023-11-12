@@ -9,17 +9,11 @@
 				<text style="font-weight: bold;padding-right: 20rpx;">愿望详情</text>
 				<input type="text" class="desireDesc" disabled :value="desc" name="desc" style="padding: 10rpx;">
 			</view>
-			<!-- <view class="state">
-			<text style="font-weight: bold;padding-right: 20rpx;">当前状态</text>
-			<text class="desireProgress" name="progress">{{desire.progress?"已完成":"等待完成"}}</text>
-		</view> -->
 			<view class="btn">
 				<button class="change" @click="changeDesire"
 					style="color:white;background-color:red;text-align: center;display: inline-block;float: left;width: 40%;border-radius: 40rpx;">修改</button>
 				<button class="delete" @click="deleteDesire"
 					style="color:white;background-color:red ;text-align: center:;display: inline-block;float: right;width: 40%;border-radius: 40rpx;">删除</button>
-				<!-- <nut-button size="large" type="primary" @click="changeDesire">修改</nut-button>
-			<nut-button size="large" type="primary" @click="deleteDesire">删除</nut-button> -->
 			</view>
 
 			<form @submit="onchange">
@@ -52,7 +46,7 @@
 	export default {
 		data() {
 			return {
-				id: "",
+				id: "1",
 				title: "想要一个书包",
 				desc: "很想要一个书包",
 				progress: false,
@@ -79,35 +73,38 @@
 			},
 			//表单修改愿望
 			onchange(e) {
-				axios({
-					method: 'PUT',
-					params: {
-						"id": id,
-						"title": title,
-						"desc": desc,
-						'token': user.getToken() 
-					},
-					headers: {
-						'Content-Type': 'application/json',
-						'token': user.getToken() 
-					},
-					url: '/desire/modifyDesire'
-				}).then(res => {
-						console.log(res);
-						if (res.code === 400) return;
-						if (res.code === 200) {
-							
-							this.title = e.detail.value.title;
-							this.desc = e.detail.value.desc;
-							this.userFeedbackHidden = true;
-						}
-					});
-				},
-		//点击修改按钮，弹出修改框
-		changeDesire() {
-			this.userFeedbackHidden = false
+				this.title = e.detail.value.title;
+				this.desc = e.detail.value.desc;
+				this.userFeedbackHidden = true;
+				// axios({
+				// 	method: 'PUT',
+				// 	params: {
+				// 		"id": id,
+				// 		"title": title,
+				// 		"desc": desc,
+				// 		'token': user.getToken() 
+				// 	},
+				// 	headers: {
+				// 		'Content-Type': 'application/json',
+				// 		'token': user.getToken() 
+				// 	},
+				// 	url: '/desire/modifyDesire'
+				// }).then(res => {
+				// 		console.log(res);
+				// 		if (res.code === 400) return;
+				// 		if (res.code === 200) {
+
+				// 			this.title = e.detail.value.title;
+				// 			this.desc = e.detail.value.desc;
+				// 			this.userFeedbackHidden = true;
+				// 		}
+				// 	});
+			},
+			//点击修改按钮，弹出修改框
+			changeDesire() {
+				this.userFeedbackHidden = false
+			}
 		}
-	}
 	}
 </script>
 

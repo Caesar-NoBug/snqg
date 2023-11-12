@@ -14,24 +14,21 @@
 		<progress :percent="progression" show-info />
 		
 		<view class="taskHelp">
-			<view class="help">
-				<text>遇到困难？</text>
-			</view>
-			<button @click="goHelp"
-				class="help"
-				style="height: 55rpx;line-height: 50rpx;font-size: 40rpx;color:red;background-color:#f4c900 ;">向志愿者求助</button>
+		
+				<button  type="primary" @click="goHelp" class="help"
+					style="color: white;background-color: red;border-radius: 40rpx;width: 40%;text-align: center;">向志愿者求助</button>
 		</view>
 		<text style="font-weight: bold;font-size: 40rpx;">上传完成情况</text>
-		<view class="introduction">
-			<textarea name="detail" id="detail" cols="30" rows="6" placeholder="在此填写文字说明"></textarea>
+		<view class="tianxie">
+			<textarea name="detail" id="detail" cols="30" rows="6" placeholder="在此填写文字说明" ></textarea>
 		</view>
 		<view class="picLoad">
-			<button @click="chooseImage" class="choose" style="height: 180rpx;width: 200rpx;">
-				<img src="" alt="">
+			<button @click="chooseImage" class="choose" style="height: 180rpx;width: 194rpx;display: inline-block;float: left;">
+				<img src="../../static/add.png" style="height: 193rpx;width: 193rpx;">
 			</button>
 		</view>
 		<view class="imgBox" >
-			<image :src="taskUrl" style="height: 180rpx;width: 200rpx;display: inline-block;"></image>
+			<image :src="taskUrl" style="height: 180rpx;width: 200rpx;display: inline-block;float: right;"></image>
 		</view>
 		<view class="btnPosition">
 			<button form-type="submit" type="primary"
@@ -69,10 +66,17 @@ import user from '../../store/user.js';
 		},
 		onUnload() {
 			//移除监听事件
-			uni.$off('taskInfo')
+			uni.$off('taskInfo'),
+			uni.$off('taskBefore');
 		},
 		methods: {
-			goHelp() {
+			goHelp(event) {
+				console.log(this.detail)
+				uni.$on('taskBefore', () => {
+					uni.$emit("taskDetail", {
+						detail: this.detail,
+					});
+				});
 				NavigateUtil.navigateTo('/pages/taskHelp/TaskHelp')
 			},
 			chooseImage() {
@@ -113,22 +117,24 @@ import user from '../../store/user.js';
 </script>
 
 <style scoped>
-	.container{
-		display: grid;
-	}
 	text{
 		padding: 20rpx;
 		padding-left: 40rpx;
 		display: block;
 	}
 	progress{
-		padding: 20rpx;
+		padding: 40rpx;
 	}
 	.introduction {
 		font-weight: bold;
 		font-size: 40rpx;
 	}
 
+	.tianxie{
+		margin: 20rpx;
+		padding: 20rpx;
+		font-size: 40rpx;
+	}
 	.help {
 		color: blue;
 		font-size: 35rpx;
@@ -151,6 +157,9 @@ import user from '../../store/user.js';
 		text-align: center;
 		padding: 40rpx;
 		margin: 20rpx;
+	}
+	.choose {
+		margin: 30rpx;
 	}
 	.tijiao {
 		display: block;

@@ -1,18 +1,11 @@
 <template>
 	<top-bar-container :returnAble="true" title="愿望列表">
 		<template #content>
-			<!-- <button class="add" @click="addDesire"
-				style="height: 55rpx;line-height: 50rpx;font-size: 35rpx;color:white;background-color:#66e400 ;text-align: right:;display: inline-block;float: right;">添加愿望</button> -->
 			<nut-button size="large" type="primary" @click="addDesire">添加愿望</nut-button>
-			<view class="desireList" v-for="item in desireList" @click="desireDetails" :data-index='item'>
-				<view class="deisreDesc">
-					<text class="desireTitle">{{item.title}}</text>
-				</view>
-				<view class="desireState">
-					<text class="desireProgress"
-						:class="{hasFinish:item.progress}">{{item.progress?"已完成":"等待完成"}}</text>
-				</view>
-				<!-- <text>{{item.desc}}</text> -->
+			<view class="" v-for="item in desireList" @click="desireDetails" :data-index='item'>
+				<nut-cell :title="item.title" :desc="item.progression?'已完成':'等待完成'" round-radius="20px"
+					size="large">
+				</nut-cell>
 			</view>
 		</template>
 	</top-bar-container>
@@ -46,7 +39,6 @@
 						progress: event.currentTarget.dataset.index.progress,
 					});
 				});
-				// console.log(event.currentTarget.dataset.index),
 				NavigateUtil.navigateTo('/pages/desireDetails/DesireDetails')
 			},
 			//跳转到添加心愿页面
