@@ -11,6 +11,8 @@
 	  <nut-button @click="func7()">主页-关注界面</nut-button>
 	  <nut-button @click="func8()">主页-推荐界面</nut-button>
 	   <nut-button @click="lookRank()">主页-查看排名</nut-button>
+	   <nut-button @click="lookTask()">主页-查看任务</nut-button>
+	   <nut-button @click="lookDesire()">主页-查看心愿</nut-button>
 
 	  
 	 
@@ -107,7 +109,12 @@
 			lookRank: function() {
 				NavigateUtil.navigateTo('/pages/LookRank/LookRank');
 			},
-			
+			lookTask: function(){
+				NavigateUtil.navigateTo('/pages/taskList/TaskList');
+			},
+			lookDesire:function(){
+				NavigateUtil.navigateTo('/pages/desireList/DesireList');
+			},
 			handleImageClick(i){
 				if(i == 0)
 				{this.message = "对我们来说，不是把一块肉割出来给大家分，而是大家互助互利、共赢。如果我切给你，这是零和游戏，不叫共赢。大家只有共赢，才能长远共同走下去。";}
